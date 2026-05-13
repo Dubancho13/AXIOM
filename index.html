@@ -1,0 +1,1672 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIOM v3.0 — Framework Definitivo de Riqueza Generacional 2026–2040</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+--void:#03030a;--abyss:#07070f;--obsidian:#0c0c16;--carbon:#12121e;--iron:#1c1c2c;
+--steel:#28283c;--slate:#3a3a52;--mist:#7070a0;--silver:#b0b0cc;--vellum:#f0eee8;
+--cream:#faf8f4;--white:#ffffff;
+--gold:#c9a84c;--gold-bright:#e8c96a;--gold-dim:#7a5f28;--gold-pale:rgba(201,168,76,.13);
+--gold-faint:rgba(201,168,76,.06);
+--teal:#38b894;--teal-dim:#1a6b52;--teal-pale:rgba(56,184,148,.12);
+--cobalt:#4a7fd4;--cobalt-dim:#1e3a6a;--cobalt-pale:rgba(74,127,212,.12);
+--crimson:#d44a4a;--crimson-pale:rgba(212,74,74,.1);
+--amber:#e09820;--amber-pale:rgba(224,152,32,.1);
+--violet:#8a68d8;--violet-pale:rgba(138,104,216,.1);
+--font-display:'Playfair Display',Georgia,serif;
+--font-sans:'DM Sans',system-ui,sans-serif;
+--font-mono:'DM Mono',monospace;
+--max-w:1100px;--pad:clamp(1.5rem,5vw,5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--cream);color:var(--carbon);font-family:var(--font-sans);line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-thumb{background:var(--gold-dim)}
+img{max-width:100%}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:900;background:rgba(3,3,10,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.15);padding:0 var(--pad);display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav-brand{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.3em;color:var(--gold);padding:.9rem 2rem .9rem 0;border-right:1px solid rgba(201,168,76,.15);margin-right:1rem;flex-shrink:0;text-transform:uppercase}
+.nav-item{font-family:var(--font-mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);text-decoration:none;padding:.9rem .9rem;transition:color .2s;white-space:nowrap;flex-shrink:0;border-bottom:1px solid transparent}
+.nav-item:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* HERO */
+.hero{background:var(--void);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;padding:var(--pad)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);background-size:72px 72px}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 5% 95%,rgba(201,168,76,.1) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 92% 8%,rgba(56,184,148,.06) 0%,transparent 50%)}
+.hero-content{position:relative;z-index:2;max-width:var(--max-w);padding-bottom:4rem}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) .3s forwards}
+.hero-title{font-family:var(--font-display);font-size:clamp(4rem,9vw,9.5rem);font-weight:900;line-height:.88;color:var(--cream);letter-spacing:-.02em;opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) .5s forwards}
+.hero-title .accent{color:var(--gold)}
+.hero-title em{font-style:italic;font-weight:400;color:rgba(240,238,232,.65)}
+.hero-sub{font-family:var(--font-sans);font-size:clamp(.95rem,1.6vw,1.2rem);color:rgba(240,238,232,.5);margin-top:1.75rem;max-width:620px;line-height:1.6;opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) .7s forwards}
+.hero-rule{width:60px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin:2rem 0;opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) .9s forwards}
+.hero-meta{display:flex;gap:3.5rem;flex-wrap:wrap;opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) 1.1s forwards}
+.hero-meta-item{display:flex;flex-direction:column;gap:.2rem}
+.hero-meta-label{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dim)}
+.hero-meta-val{font-family:var(--font-sans);font-size:.95rem;color:rgba(240,238,232,.75)}
+.hero-bg-word{position:absolute;right:-2rem;bottom:-2rem;font-family:var(--font-display);font-size:clamp(10rem,22vw,22rem);font-weight:900;font-style:italic;color:rgba(201,168,76,.03);line-height:1;user-select:none;pointer-events:none;letter-spacing:-.03em;z-index:1}
+
+/* SECTIONS */
+.section{padding:6rem var(--pad);max-width:var(--max-w);margin:0 auto;opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.section.visible{opacity:1;transform:none}
+.section-dark{background:var(--void)}
+.section-tinted{background:var(--abyss)}
+.section-subtle{background:linear-gradient(180deg,var(--cream) 0%,rgba(201,168,76,.04) 100%)}
+
+/* SECTION HEADER */
+.s-hd{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:2.5rem;margin-bottom:3.5rem}
+.s-num{font-family:var(--font-display);font-size:clamp(5rem,9vw,8rem);font-weight:900;color:rgba(201,168,76,.12);line-height:.85;flex-shrink:0}
+.s-tag{font-family:var(--font-mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem}
+.s-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.1;color:var(--void)}
+.s-title em{font-style:italic;font-weight:400;color:var(--slate)}
+.s-title-light{color:var(--cream)}
+.s-title-light em{color:var(--mist)}
+
+/* TYPOGRAPHY */
+.lead{font-size:1.05rem;line-height:1.75;color:#3a3a4e;margin-bottom:2.5rem;max-width:780px}
+.lead-light{color:rgba(240,238,232,.65)}
+strong{font-weight:600;color:var(--carbon)}
+
+/* SIGNAL CARDS */
+.sig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:2.5rem 0}
+.sig-card{padding:2rem;border:1px solid rgba(201,168,76,.12);position:relative;overflow:hidden;background:var(--cream)}
+.sig-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.sig-card.gold::before{background:var(--gold)}
+.sig-card.teal::before{background:var(--teal)}
+.sig-card.crimson::before{background:var(--crimson)}
+.sig-label{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem}
+.sig-ttl{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:.75rem;color:var(--void)}
+.sig-body{font-size:.87rem;line-height:1.68;color:#4a4a60}
+.sig-stat{display:inline-block;margin-top:1.25rem;font-family:var(--font-display);font-size:2.2rem;font-weight:900;color:var(--gold)}
+
+/* DIAGNOSTIC BANNER */
+.diag-banner{background:var(--carbon);border:1px solid rgba(201,168,76,.18);padding:2rem 2.5rem;margin:2.5rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem}
+.diag-item{}
+.diag-label{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);margin-bottom:.35rem}
+.diag-val{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--cream);line-height:1}
+.diag-sub{font-size:.75rem;color:var(--mist);margin-top:.25rem}
+
+/* SECTOR CARDS */
+.sector{border:1px solid rgba(201,168,76,.1);margin-bottom:2.5rem;background:var(--cream)}
+.sector-hd{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;border-bottom:1px solid rgba(201,168,76,.1);gap:1rem;flex-wrap:wrap}
+.sector-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--void)}
+.tier{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.2em;padding:.3rem .9rem;border:1px solid}
+.tier-core{color:var(--teal);border-color:var(--teal);background:var(--teal-pale)}
+.tier-asym{color:var(--amber);border-color:var(--amber);background:var(--amber-pale)}
+.tier-exp{color:var(--violet);border-color:var(--violet);background:var(--violet-pale)}
+.tier-avoid{color:var(--crimson);border-color:var(--crimson);background:var(--crimson-pale)}
+.sector-bd{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.sector-col{padding:2rem}
+.sector-col+.sector-col{border-left:1px solid rgba(201,168,76,.1)}
+.sector-col-ttl{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.sector-txt{font-size:.87rem;line-height:1.72;color:#3a3a50;margin-bottom:1.25rem}
+.sector-txt strong{color:var(--void)}
+
+/* EVIDENCE PILLS */
+.ev-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
+.ev-pill{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;padding:.25rem .7rem;border-radius:2px;display:flex;align-items:center;gap:.3rem}
+.ev-green{background:var(--teal-pale);color:var(--teal-dim);border:1px solid rgba(56,184,148,.25)}
+.ev-gold{background:var(--gold-pale);color:var(--gold-dim);border:1px solid rgba(201,168,76,.25)}
+.ev-red{background:var(--crimson-pale);color:#7a2020;border:1px solid rgba(212,74,74,.25)}
+
+/* CHECKLIST */
+.checklist{list-style:none;margin:1rem 0}
+.checklist li{font-size:.85rem;line-height:1.55;padding:.4rem 0;border-bottom:1px solid rgba(201,168,76,.07);color:#3a3a50;display:flex;gap:.6rem;align-items:flex-start}
+.ck-pass{color:var(--teal);flex-shrink:0;font-size:.9rem}
+.ck-warn{color:var(--amber);flex-shrink:0;font-size:.9rem}
+.ck-fail{color:var(--crimson);flex-shrink:0;font-size:.9rem}
+
+/* ASYM SCORE */
+.asym-score{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+.asym-num{font-family:var(--font-display);font-size:3.2rem;font-weight:900;color:var(--gold);line-height:1}
+.asym-lbl-top{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist)}
+.asym-lbl-bot{font-size:.8rem;color:#3a3a50}
+
+/* PROGRESS */
+.prog-wrap{margin:1.25rem 0}
+.prog-lbl{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.1em;color:var(--mist);margin-bottom:.5rem}
+.prog-track{height:4px;background:rgba(201,168,76,.1);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(to right,var(--gold-dim),var(--gold));transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+.prog-stages{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.45rem;color:rgba(112,112,160,.5);margin-top:.35rem}
+.prog-marker{font-family:var(--font-mono);font-size:.5rem;color:var(--gold);margin-top:.5rem;letter-spacing:.05em}
+
+/* VERDICT */
+.verdict{margin-top:1.5rem;padding:1.25rem;background:var(--gold-faint);border-left:3px solid var(--gold)}
+.verdict-lbl{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:.4rem}
+.verdict-txt{font-size:.85rem;line-height:1.65;color:#2a2a3e}
+.verdict-txt strong{color:var(--void)}
+
+/* FRESH DATA CALLOUT */
+.fresh-data{background:var(--carbon);border:1px solid rgba(56,184,148,.2);padding:1.25rem 1.5rem;margin:1rem 0;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.fresh-icon{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);white-space:nowrap;padding-top:.15rem}
+.fresh-txt{font-size:.82rem;line-height:1.65;color:rgba(240,238,232,.7)}
+.fresh-txt strong{color:var(--teal)}
+
+/* ASYM MAP */
+.asym-row{display:grid;grid-template-columns:240px 1fr auto;align-items:center;gap:1.5rem;padding:1rem 0;border-bottom:1px solid rgba(201,168,76,.08)}
+.asym-row:last-child{border:none}
+.asym-name{font-size:.87rem;color:var(--void);font-weight:500}
+.asym-bars{display:flex;flex-direction:column;gap:.4rem}
+.asym-track{height:6px;background:rgba(201,168,76,.07);border-radius:3px;overflow:hidden}
+.asym-up{height:100%;background:linear-gradient(to right,var(--teal-dim),var(--teal));transition:width 1.5s}
+.asym-dn{height:100%;background:linear-gradient(to right,rgba(212,74,74,.4),var(--crimson));transition:width 1.5s}
+.asym-ann{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.42rem;color:rgba(112,112,160,.6);margin-top:.2rem}
+.asym-ratio{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--gold);min-width:50px;text-align:right}
+
+/* COMPOUNDING TABLE */
+.staircase{margin:2.5rem 0}
+.stair-row{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:1.5rem;padding:.6rem 0;border-bottom:1px solid rgba(201,168,76,.07);min-height:56px}
+.stair-year{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:var(--mist)}
+.stair-bar-wrap{display:flex;align-items:center;gap:.75rem}
+.stair-bar{height:20px;background:linear-gradient(to right,var(--gold-dim),var(--gold));transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+.stair-note{font-size:.78rem;color:#7070a0;line-height:1.35}
+.stair-val{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--void);white-space:nowrap;min-width:120px;text-align:right}
+
+/* PHASE GRID */
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:2.5rem 0}
+.phase-card{border:1px solid rgba(201,168,76,.12);overflow:hidden;background:var(--cream)}
+.phase-hd{background:var(--carbon);padding:1.25rem 1.5rem;border-bottom:1px solid rgba(201,168,76,.12)}
+.phase-hd-num{font-family:var(--font-mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.phase-hd-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--cream);line-height:1.2}
+.phase-hd-range{font-family:var(--font-mono);font-size:.55rem;color:var(--mist);margin-top:.25rem}
+.phase-bd{padding:1.5rem}
+.phase-target{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:var(--gold);margin-bottom:.75rem}
+.phase-desc{font-size:.83rem;line-height:1.65;color:#3a3a50;margin-bottom:1rem}
+.phase-focus{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);margin-bottom:.4rem}
+.phase-items{list-style:none}
+.phase-items li{font-size:.8rem;color:#4a4a60;padding:.28rem 0;border-bottom:1px solid rgba(201,168,76,.06)}
+.phase-items li::before{content:'→ ';color:var(--gold-dim);font-family:var(--font-mono)}
+
+/* KELLY GRID */
+.kelly-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2.5rem 0}
+.kelly-card{background:var(--cobalt-pale);border:1px solid rgba(74,127,212,.2);padding:1.5rem}
+.kelly-label{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt);margin-bottom:.5rem}
+.kelly-pct{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--cobalt);line-height:1;margin-bottom:.4rem}
+.kelly-desc{font-size:.8rem;line-height:1.55;color:#2a2a3e}
+
+/* SCENARIO GRID */
+.scen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0}
+.scen-card{padding:2rem;border:1px solid;text-align:center}
+.scen-card.bear{border-color:rgba(212,74,74,.3);background:var(--crimson-pale)}
+.scen-card.base{border-color:rgba(56,184,148,.3);background:var(--teal-pale)}
+.scen-card.bull{border-color:rgba(201,168,76,.3);background:var(--gold-pale)}
+.scen-type{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.6rem}
+.scen-card.bear .scen-type{color:var(--crimson)}
+.scen-card.base .scen-type{color:var(--teal)}
+.scen-card.bull .scen-type{color:var(--gold)}
+.scen-val{font-family:var(--font-display);font-size:2.8rem;font-weight:900;line-height:1;margin-bottom:.5rem;color:var(--void)}
+.scen-prob{font-size:.82rem;color:#4a4a60;line-height:1.5}
+.scen-cagr{font-family:var(--font-mono);font-size:.6rem;color:var(--mist);margin-top:.5rem}
+
+/* PSYCHOLOGY GRID */
+.psych-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2.5rem 0}
+.psych-card{padding:2rem;border:1px solid rgba(201,168,76,.12);background:var(--cream)}
+.psych-threat{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:.4rem}
+.psych-title{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem;color:var(--void)}
+.psych-body{font-size:.85rem;line-height:1.65;color:#3a3a50;margin-bottom:1rem}
+.psych-antidote{padding:.85rem 1rem;background:var(--teal-pale);border-left:3px solid var(--teal)}
+.psych-ant-lbl{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-dim);margin-bottom:.25rem}
+.psych-ant-txt{font-size:.82rem;color:#1a3a2e;line-height:1.5}
+
+/* MENTAL MODELS */
+.model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:2.5rem 0}
+.model-card{background:var(--carbon);padding:2rem;border:1px solid rgba(201,168,76,.1)}
+.model-num{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.2em;color:var(--gold-dim);margin-bottom:.6rem}
+.model-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:.65rem}
+.model-body{font-size:.85rem;line-height:1.7;color:rgba(240,238,232,.65)}
+.model-app{margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(201,168,76,.12);font-family:var(--font-mono);font-size:.55rem;letter-spacing:.08em;color:var(--gold);line-height:1.6}
+
+/* EXIT GRID */
+.exit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2.5rem 0}
+.exit-card{padding:2rem;border:1px solid}
+.exit-card.danger{border-color:rgba(212,74,74,.35);background:var(--crimson-pale)}
+.exit-card.safe{border-color:rgba(56,184,148,.35);background:var(--teal-pale)}
+.exit-lbl{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.6rem}
+.exit-card.danger .exit-lbl{color:var(--crimson)}
+.exit-card.safe .exit-lbl{color:var(--teal)}
+.exit-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
+.exit-card.danger .exit-title{color:#5a1414}
+.exit-card.safe .exit-title{color:#0a3020}
+.exit-list{list-style:none}
+.exit-list li{font-size:.83rem;line-height:1.55;padding:.35rem 0;border-bottom:1px solid rgba(201,168,76,.1);color:#2a2a3e}
+.exit-list li::before{content:'→ ';font-family:var(--font-mono);color:var(--gold-dim)}
+
+/* RULES GRID */
+.rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.1);margin:2.5rem 0}
+.rule-cell{background:var(--cream);padding:2rem;display:flex;gap:1.25rem}
+.rule-n{font-family:var(--font-display);font-size:3rem;font-weight:900;color:rgba(201,168,76,.13);line-height:1;flex-shrink:0}
+.rule-txt{font-size:.87rem;line-height:1.68;color:#3a3a50}
+.rule-txt strong{display:block;font-family:var(--font-display);font-size:1rem;color:var(--void);margin-bottom:.3rem;font-weight:700}
+
+/* WEALTH LAYERS */
+.wealth-layer{display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:2rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(201,168,76,.08)}
+.wealth-layer-name{font-family:var(--font-display);font-size:1rem;font-weight:700;line-height:1.3}
+.wealth-layer-desc{font-size:.85rem;line-height:1.65;color:#3a3a50}
+.wealth-layer-pct{font-family:var(--font-display);font-size:1.8rem;font-weight:900;text-align:right}
+
+/* CALENDAR */
+.cal-row{display:grid;grid-template-columns:80px 1fr;margin-bottom:0}
+.cal-period{background:var(--obsidian);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.85rem;font-weight:700;letter-spacing:.1em;color:var(--cream);writing-mode:vertical-lr;text-orientation:mixed;transform:rotate(180deg);padding:1.5rem .75rem;min-height:110px;border-bottom:1px solid rgba(201,168,76,.08)}
+.cal-content{padding:1.5rem 2rem;border:1px solid rgba(201,168,76,.12);border-left:none;background:var(--cream);margin-bottom:-1px}
+.cal-action{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.3rem;color:var(--void)}
+.cal-detail{font-size:.85rem;color:#4a4a60;line-height:1.6}
+
+/* ERROR LIST */
+.error-list{list-style:none}
+.error-item{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;padding:2rem 0;border-bottom:1px solid rgba(201,168,76,.1)}
+.error-item:last-child{border:none}
+.error-num{font-family:var(--font-display);font-size:4rem;font-weight:900;color:rgba(212,74,74,.18);line-height:1}
+.error-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:.5rem;color:var(--void)}
+.error-desc{font-size:.87rem;line-height:1.7;color:#3a3a50}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--carbon);border:1px solid rgba(201,168,76,.18);padding:2.5rem;margin:3rem 0}
+.summary-label{font-family:var(--font-mono);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:block}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.sum-block{padding:1.5rem;border:1px solid rgba(201,168,76,.12)}
+.sum-block-title{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.sum-block-body{font-size:.83rem;line-height:1.65;color:rgba(240,238,232,.65)}
+
+/* PULLQUOTE */
+.pullquote{border-left:3px solid var(--gold);padding:1.5rem 2rem;margin:3rem 0;background:var(--gold-faint)}
+.pullquote p{font-family:var(--font-display);font-size:1.2rem;font-style:italic;line-height:1.55;color:var(--void)}
+.pullquote cite{display:block;margin-top:.75rem;font-family:var(--font-mono);font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);font-style:normal}
+
+/* BOTTLENECK GRID */
+.bn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin:2.5rem 0}
+.bn-cell{padding:1.75rem;border:1px solid rgba(201,168,76,.12);background:var(--cream)}
+.bn-chain{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);margin-bottom:.35rem}
+.bn-node{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--void);margin-bottom:.65rem}
+.bn-desc{font-size:.83rem;line-height:1.65;color:#3a3a50;margin-bottom:.75rem}
+.bn-urgency{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;padding:.25rem .6rem;display:inline-block;border-radius:2px}
+.urg-critical{background:rgba(212,74,74,.1);color:#8a1a1a}
+.urg-high{background:rgba(201,168,76,.1);color:var(--gold-dim)}
+.urg-building{background:rgba(56,184,148,.1);color:var(--teal-dim)}
+
+/* GOLD RULE */
+.gold-rule{height:1px;background:linear-gradient(to right,var(--gold-dim),rgba(201,168,76,.1),transparent);margin:3rem 0}
+
+/* FOOTER */
+.footer{background:var(--void);padding:5rem var(--pad);text-align:center;border-top:1px solid rgba(201,168,76,.1)}
+.footer-logo{font-family:var(--font-display);font-size:3rem;font-weight:900;font-style:italic;color:rgba(201,168,76,.15);margin-bottom:1.5rem}
+.footer-disc{font-size:.78rem;line-height:1.7;color:var(--mist);max-width:700px;margin:0 auto}
+
+/* UTILS */
+.gold-rule{height:1px;background:linear-gradient(to right,var(--gold-dim),rgba(201,168,76,.1),transparent);margin:3rem 0}
+.mt-2{margin-top:2rem}.mt-3{margin-top:3rem}.mb-2{margin-bottom:2rem}
+.tag{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid rgba(201,168,76,.25);color:var(--gold-dim);display:inline-block;margin-left:.5rem;vertical-align:middle}
+
+/* ANIMATIONS */
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .sector-bd{grid-template-columns:1fr}
+  .sector-col+.sector-col{border-left:none;border-top:1px solid rgba(201,168,76,.1)}
+  .scen-grid{grid-template-columns:1fr}
+  .exit-grid{grid-template-columns:1fr}
+  .rules-grid{grid-template-columns:1fr}
+  .asym-row{grid-template-columns:1fr}
+  .wealth-layer{grid-template-columns:1fr;gap:.75rem}
+  .s-hd{grid-template-columns:1fr}
+  .s-num{font-size:4rem}
+  .hero-bg-word{display:none}
+  .cal-row{grid-template-columns:60px 1fr}
+  .diag-banner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .psych-grid{grid-template-columns:1fr}
+  .model-grid{grid-template-columns:1fr}
+  .bn-grid{grid-template-columns:1fr}
+  .kelly-grid{grid-template-columns:1fr}
+  .diag-banner{grid-template-columns:1fr}
+  .hero-meta{gap:2rem}
+  .asym-name{font-size:.8rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">AXIOM v3</div>
+  <a class="nav-item" href="#fundamentos">I. Fundamentos</a>
+  <a class="nav-item" href="#diagnostico">II. Diagnóstico</a>
+  <a class="nav-item" href="#cuellos">III. Cuellos de Botella</a>
+  <a class="nav-item" href="#sectores">IV. 7 Sectores</a>
+  <a class="nav-item" href="#asimetria">V. Asimetría Real</a>
+  <a class="nav-item" href="#compounding">VI. Compounding</a>
+  <a class="nav-item" href="#kelly">VII. Sizing & Kelly</a>
+  <a class="nav-item" href="#psicologia">VIII. Psicología</a>
+  <a class="nav-item" href="#modelos">IX. Modelos Mentales</a>
+  <a class="nav-item" href="#errores">X. Errores Fatales</a>
+  <a class="nav-item" href="#salida">XI. Arquitectura Salida</a>
+  <a class="nav-item" href="#implementacion">XII. Implementación</a>
+  <a class="nav-item" href="#preservacion">XIII. Preservación</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-bg-word">AXIOM</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Framework Definitivo — Riqueza Generacional — Actualizado Mayo 2026</div>
+    <h1 class="hero-title">
+      <span class="accent">AX</span>IOM<br>
+      <em>v3.0 — 2026–2040</em>
+    </h1>
+    <p class="hero-sub">El sistema más riguroso jamás construido para un inversor de 24 años con $2,000 y visión de 14 años. Investigación profunda. Datos de Q1 2026. Evidencia contractual verificada. Ningún hype. Solo estructura, probabilidades y compounding.</p>
+    <div class="hero-rule"></div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Versión</span>
+        <span class="hero-meta-val">AXIOM 3.0 — Definitiva</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Horizonte</span>
+        <span class="hero-meta-val">14 Años / 2026–2040</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Capital inicial</span>
+        <span class="hero-meta-val">$2,000 USD</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Aporte anual</span>
+        <span class="hero-meta-val">$4,000 / año</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Datos actualizados</span>
+        <span class="hero-meta-val">Q1 2026 — Mayo 13</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ I. FUNDAMENTOS ══ -->
+<section class="section" id="fundamentos">
+  <div class="s-hd">
+    <div class="s-num">I</div>
+    <div>
+      <span class="s-tag">La arquitectura del pensamiento</span>
+      <h2 class="s-title">Fundamentos del <em>Framework AXIOM</em></h2>
+    </div>
+  </div>
+
+  <p class="lead">AXIOM v3.0 no es una lista de acciones. Es un sistema de pensamiento completo: cómo identificar inevitabilidad estructural, capturar asimetría real, sobrevivir psicológicamente a la volatilidad, y construir riqueza que supere ciclos, décadas y errores emocionales.</p>
+
+  <div class="sig-grid">
+    <div class="sig-card gold">
+      <div class="sig-label">Principio Central</div>
+      <div class="sig-ttl">Los ciclos tecnológicos son leyes físicas, no predicciones</div>
+      <div class="sig-body">La electricidad no fue una apuesta. El internet no fue especulación. La IA, los semiconductores avanzados y la energía limpia son igualmente inevitables. Están sucediendo ahora, verificables en contratos y backlogs públicos. El trabajo del inversor es ubicarse antes de que el consenso lo confirme — y mantenerse ahí mientras el compounding trabaja en silencio.</div>
+      <span class="sig-stat">14 años</span>
+    </div>
+    <div class="sig-card teal">
+      <div class="sig-label">La ventaja estructural real</div>
+      <div class="sig-ttl">Evidencia pública + tiempo + convicción = asimetría</div>
+      <div class="sig-body">La asimetría real no viene de información que nadie tiene. Viene de actuar sobre información pública que nadie tiene paciencia de mantener. Los contratos están publicados en los 8-K. Los backlogs son reportados en earnings. El capital soberano es anunciado en ruedas de prensa. La ventaja es el horizonte temporal de 14 años y la convicción disciplinada bajo volatilidad.</div>
+      <span class="sig-stat">10:1</span>
+    </div>
+    <div class="sig-card crimson">
+      <div class="sig-label">Lo que destruye carteras</div>
+      <div class="sig-ttl">Acciones incorrectas en momentos correctos</div>
+      <div class="sig-body">El mayor riesgo no es elegir el sector equivocado — es tener razón en la tesis y vender en el drawdown antes de que se materialice el retorno. El 80% de los inversores que pierden dinero en ideas correctas lo hacen por incapacidad psicológica, no por error analítico. La gestión de la psicología es tan crítica como la gestión del portafolio.</div>
+      <span class="sig-stat">80%</span>
+    </div>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-cell">
+      <div class="rule-n">1</div>
+      <div class="rule-txt"><strong>Preservación de capital como axioma</strong>El retorno de 300% en 5 años seguido de -80% te deja peor que un compounding del 12% anual sin interrupción. La asimetría del drawdown es brutal: -50% requiere +100% para recuperarse. Nunca pongas en riesgo la continuidad del sistema.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-n">2</div>
+      <div class="rule-txt"><strong>Evidencia contractual por encima de todo</strong>Filtro #1: ¿Hay contratos firmados con nombres reales y montos verificables? ¿Hay backlog reportado en filings públicos? Si la respuesta es no, la posición es especulativa pura — categoría exploratoria máximo 5%. La narrativa sin contratos es ruido.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-n">3</div>
+      <div class="rule-txt"><strong>Compounding sin interrupción es la estrategia suprema</strong>Buffett acumuló el 99% de su riqueza después de los 50 años. No por inteligencia superior — por compounding ininterrumpido desde los 10 años. A los 24 con $2,000, tienes el mismo activo que Buffett a los 10: tiempo. No lo destruyas con impaciencia.</div>
+    </div>
+    <div class="rule-cell">
+      <div class="rule-n">4</div>
+      <div class="rule-txt"><strong>Invierte en cuellos de botella, no en historias</strong>El que fabrica el láser EUV (ASML) tiene más moat que el que diseña el chip. El que transforma la electricidad tiene más predictibilidad que el que la genera. El cuello de botella escaso con cliente cautivo es la posición más fuerte en cualquier ciclo tecnológico.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ II. DIAGNÓSTICO ══ -->
+<div style="background:var(--abyss)">
+<section class="section" id="diagnostico" style="padding:5rem var(--pad)">
+  <div class="s-hd">
+    <div class="s-num" style="color:rgba(201,168,76,.2)">II</div>
+    <div>
+      <span class="s-tag">Tu perfil — Mayo 2026</span>
+      <h2 class="s-title s-title-light">Diagnóstico <em>de Capital y Escenarios</em></h2>
+    </div>
+  </div>
+
+  <div class="diag-banner">
+    <div class="diag-item">
+      <div class="diag-label">Capital hoy</div>
+      <div class="diag-val" style="color:var(--gold)">$2,000</div>
+      <div class="diag-sub">Fase 1 — Multiplicación agresiva</div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-label">Aporte trimestral</div>
+      <div class="diag-val">$1,000</div>
+      <div class="diag-sub">$4,000 anuales consistentes</div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-label">Horizonte</div>
+      <div class="diag-val">14 años</div>
+      <div class="diag-sub">Hasta 2040 — 38 años de edad</div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-label">Edad</div>
+      <div class="diag-val">24</div>
+      <div class="diag-sub">Ventaja competitiva #1: tiempo</div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-label">Aportes totales</div>
+      <div class="diag-val">$58K</div>
+      <div class="diag-sub">14 años × $4K = $56K + $2K inicial</div>
+    </div>
+  </div>
+
+  <div class="scen-grid">
+    <div class="scen-card bear">
+      <div class="scen-type">Escenario Bajista</div>
+      <div class="scen-val">$85K</div>
+      <div class="scen-prob">Un sector falla completamente. Rotación forzada en mal momento. Ejecución inconsistente de aportes. Ventas emocionales en drawdowns.</div>
+      <div class="scen-cagr">CAGR ~8% · Probabilidad: 20%</div>
+    </div>
+    <div class="scen-card base">
+      <div class="scen-type">Escenario Base</div>
+      <div class="scen-val">$320K</div>
+      <div class="scen-prob">3–4 tesis funcionan correctamente. Aportes consistentes. Compounding intacto. 1–2 posiciones asimétricas producen 3–5x.</div>
+      <div class="scen-cagr">CAGR ~16% · Probabilidad: 55%</div>
+    </div>
+    <div class="scen-card bull">
+      <div class="scen-type">Escenario Alcista</div>
+      <div class="scen-val">$900K+</div>
+      <div class="scen-prob">1 posición asimétrica produce 8–15x. Core produce 4–5x. Sin interrupciones. Aportes aumentan con el tiempo con mayor ingreso.</div>
+      <div class="scen-cagr">CAGR ~24% · Probabilidad: 25%</div>
+    </div>
+  </div>
+
+  <p class="lead lead-light" style="font-size:.9rem">Valor esperado matemático a 2040: ~$390K. Probabilidad de ruina permanente (&gt;70% pérdida sin recuperación): &lt;3% si respetas el sizing y evitas apalancamiento. A los 38 años con $390K promedio esperado, tienes 27 años de vida productiva adicional para continuar el compounding hacia riqueza real. La matemática del tiempo trabaja para ti — no en tu contra.</p>
+</section>
+</div>
+
+<!-- ══ III. CUELLOS DE BOTELLA ══ -->
+<section class="section" id="cuellos">
+  <div class="s-hd">
+    <div class="s-num">III</div>
+    <div>
+      <span class="s-tag">Mapa de escasez estructural — Mayo 2026</span>
+      <h2 class="s-title">Los Cuellos de Botella <em>Irresistibles</em></h2>
+    </div>
+  </div>
+
+  <p class="lead">El inversor amateur busca quién se beneficia del ciclo. El inversor sofisticado busca qué no puede ser reemplazado si el ciclo falla. Invierte en el láser, no en el chip. En el transformador, no en la planta de energía. En el cohete, no en el satélite. Ahí es donde vive la asimetría real.</p>
+
+  <div class="bn-grid">
+    <div class="bn-cell">
+      <div class="bn-chain">AI → Semiconductores → Fabricación</div>
+      <div class="bn-node">EUV Lithography (ASML)</div>
+      <div class="bn-desc">El único fabricante de máquinas EUV del planeta. Sin ASML, no hay chip avanzado. Backlog €38.8B. Guidance 2026 elevado a €36–40B. Supply no alcanza demand explícitamente. Moat de 30 años de I+D acumulado que ningún competidor puede replicar a ningún precio razonable.</div>
+      <div class="bn-urgency urg-critical">● CRÍTICO — Monopolio irreplicable</div>
+    </div>
+    <div class="bn-cell">
+      <div class="bn-chain">AI → Energía → Grid</div>
+      <div class="bn-node">Transformadores de Potencia</div>
+      <div class="bn-desc">Demanda subió 119% desde 2019 en EEUU. Lead times: 2–4 años. Solo 3–4 fabricantes calificados globalmente para unidades de alta potencia. GE Vernova: backlog récord $163B en Q1 2026, proyectando $200B en 2027. Eaton invierte $1.2B en expansión de capacidad. El cuello de botella más ignorado del ciclo AI.</div>
+      <div class="bn-urgency urg-critical">● CRÍTICO — Supply/demand gap 2–4 años</div>
+    </div>
+    <div class="bn-cell">
+      <div class="bn-chain">AI → Chips → Advanced Packaging</div>
+      <div class="bn-node">CoWoS / HBM Production</div>
+      <div class="bn-desc">Jensen Huang: la capacidad de advanced packaging se cuadruplicó y sigue siendo el limitante principal de producción de GPUs. TSMC escala CoWoS de 75K a 130K wafers/mes — insuficiente. HBM 100% asignado hasta Q2 2027. Sin CoWoS no hay H100, sin H100 no hay AI. El packaging es más escaso que el diseño.</div>
+      <div class="bn-urgency urg-critical">● CRÍTICO — 100% asignado hasta Q2 2027</div>
+    </div>
+    <div class="bn-cell">
+      <div class="bn-chain">Nuclear → Energía</div>
+      <div class="bn-node">Uranium Enrichment & Fuel</div>
+      <div class="bn-desc">Todos los hyperscalers firmaron PPAs nucleares multi-decadales. La demanda de combustible nuclear para 20+ GW de nuevas capacidades crea escasez en enriquecimiento fuera de Rusia. Western suppliers: Urenco, Centrus. Número de fábricas de enriquecimiento certificadas en occidente se cuenta con los dedos de una mano.</div>
+      <div class="bn-urgency urg-high">● ALTO — Pipeline 20+ GW confirmado</div>
+    </div>
+    <div class="bn-cell">
+      <div class="bn-chain">Robótica → Physical AI</div>
+      <div class="bn-node">Edge AI Chips (inferencia local)</div>
+      <div class="bn-desc">Un robot no puede esperar 200ms a un datacenter en Virginia para decidir si lo que ve es un obstáculo. Toda IA física requiere chips de inferencia de ultra-bajo consumo. Ambarella, Qualcomm Dragonwing, Nvidia Jetson. El mercado de edge AI crece 16.2% CAGR hasta 2034. Latencia es no negociable = demanda inelástica.</div>
+      <div class="bn-urgency urg-high">● ALTO — Demanda inelástica estructural</div>
+    </div>
+    <div class="bn-cell">
+      <div class="bn-chain">Minerales → Supply Chain</div>
+      <div class="bn-node">Tierras Raras ex-China</div>
+      <div class="bn-desc">China controla 40–90% del procesamiento global. DoD es ya el mayor accionista de MP Materials con offtake de 10 años + price floor + compromiso de comprar 70% de producción. EO Trump enero 2026 sobre minerales críticos. Neodimio y disprosio = magnetos para EV, robots, defensa — sin sustituto económico a 10 años.</div>
+      <div class="bn-urgency urg-critical">● CRÍTICO — Riesgo sistémico geopolítico activo</div>
+    </div>
+    <div class="bn-cell">
+      <div class="bn-chain">Espacio → Lanzamiento</div>
+      <div class="bn-node">Cohetes reutilizables medianos</div>
+      <div class="bn-desc">SpaceX domina heavy-lift. El segmento de misiones dedicadas medianas está creciendo explosivamente. Rocket Lab: backlog récord $2.2B en Q1 2026 (+108% YoY), 70+ misiones contratadas, $200M de revenue trimestral. El gap entre demanda de lanzamiento y capacidad disponible se amplía con cada nueva constelación contratada.</div>
+      <div class="bn-urgency urg-high">● ALTO — Backlog 108% YoY, capacity constraint</div>
+    </div>
+    <div class="bn-cell">
+      <div class="bn-chain">Quantum → Hardware</div>
+      <div class="bn-node">Trapped-Ion Systems (IonQ)</div>
+      <div class="bn-desc">IonQ: Q1 2026 revenue $64.7M (+755% YoY). Guidance 2026 elevado a $260–270M. $3.1B en caja. DARPA HARQ program. $39M contrato Space Development Agency. Remaining performance obligations: $470M (+554% YoY). El único pure-play cuántico con revenue real, gobierno como cliente, y caja para sobrevivir la carrera hacia fault tolerance.</div>
+      <div class="bn-urgency urg-building">● EMERGENTE — Comercialización acelerando</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IV. LOS 7 SECTORES ══ -->
+<div style="background:linear-gradient(180deg,var(--cream) 0%,rgba(201,168,76,.03) 100%)">
+<section class="section" id="sectores">
+  <div class="s-hd">
+    <div class="s-num">IV</div>
+    <div>
+      <span class="s-tag">5 filtros por sector — sin hype, solo evidencia contractual</span>
+      <h2 class="s-title">Los 7 Sectores <em>AXIOM 2026–2040</em></h2>
+    </div>
+  </div>
+  <p class="lead">Cada sector pasa 5 filtros no negociables: (1) revenue o backlog verificable hoy; (2) contratos firmados con nombres reales y montos; (3) moat específico y articulable; (4) catalizador con timeline definido; (5) asimetría superior a 5:1. Si falla un filtro, baja de categoría. Si falla dos, sale del framework.</p>
+
+  <!-- SECTOR 1 -->
+  <div class="sector">
+    <div class="sector-hd">
+      <div class="sector-name">1. Equipment de Semiconductores — El Monopolio Irreplicable</div>
+      <span class="tier tier-core">CORE — MÁXIMA CONVICCIÓN</span>
+    </div>
+    <div class="sector-bd">
+      <div class="sector-col">
+        <div class="sector-col-ttl">Estado del Ciclo & Evidencia Q1 2026</div>
+        <div class="sector-txt">
+          ASML reportó Q1 2026 con €8.8B en revenue (53% margen bruto), elevó guidance a <strong>€36–40B para 2026</strong> y confirma target de €44–60B para 2030. Backlog €38.8B. El CEO Fouquet: <em>"Demand for chips is outpacing supply."</em> Supply de EUV no alcanza demand — ASML lo dice explícitamente en el filing.<br><br>
+          KLA: 41.3% margen operativo, 16 años consecutivos de dividendos crecientes, actualizada a Overweight por Barclays específicamente por menor exposición China. AMAT: afectada corto plazo por China pero con posicionamiento en deposición y equipment de materiales esencial en todos los nodos. Lam Research: 22.1% YoY crecimiento — pero 35% exposición China crea riesgo regulatorio. TSMC 2nm, Samsung Pyeongtaek P5, Intel 18A requieren docenas de sistemas EUV adicionales hasta 2027.
+        </div>
+        <div class="fresh-data">
+          <div class="fresh-icon">⬤ LIVE Q1 2026</div>
+          <div class="fresh-txt"><strong>ASML actuals:</strong> Q1 revenue €8.8B · Backlog €38.8B · Guidance elevado €36–40B · Target 2030: €44–60B · SK Hynix $7B+ multi-year EUV order · TSMC Arizona fab confirmada · 2 sistemas High-NA EUV entregados ya</div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl"><span>Posición en el ciclo tecnológico</span><span style="color:var(--gold)">70% — Plataforma/Infraestructura</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:70%"></div></div>
+          <div class="prog-stages"><span>I+D</span><span>Early Ramp</span><span>Plataforma</span><span>Commodity</span></div>
+          <div class="prog-marker">▲ Aceleración de infraestructura — High-NA EUV iniciando ramp</div>
+        </div>
+      </div>
+      <div class="sector-col">
+        <div class="sector-col-ttl">Filtros del Framework (5 de 5)</div>
+        <div class="asym-score"><div class="asym-num">9.6</div><div><div class="asym-lbl-top">Score de Asimetría</div><div class="asym-lbl-bot">máximo absoluto del framework</div></div></div>
+        <ul class="checklist">
+          <li><span class="ck-pass">✓</span> Revenue verificado: ASML €32.7B en 2025. KLA: 41.3% margen operativo. Backlog total sector: €38.8B+ en ASML solo.</li>
+          <li><span class="ck-pass">✓</span> Contratos reales: TSMC plurianuales (2nm, 3nm). SK Hynix $7B+ EUV. Samsung P5. Intel 18A confirmados.</li>
+          <li><span class="ck-pass">✓</span> Moat irreplicable: 30 años de I+D acumulado en EUV. Ningún competidor en el horizonte de 10 años. Proveedor único.</li>
+          <li><span class="ck-pass">✓</span> Catalizador: High-NA EUV ramp 2026–2028. 2nm producción. HBM superciclo por AI. CHIPS Act acelerando fabs.</li>
+          <li><span class="ck-warn">⚠</span> Riesgo: exposición China (19% en Q1 2026 y declinando). Ciclos de capex en downturn pueden retrasar pedidos.</li>
+        </ul>
+        <div class="ev-row">
+          <span class="ev-pill ev-green">✓ Backlog €38.8B</span>
+          <span class="ev-pill ev-green">✓ Monopolio EUV</span>
+          <span class="ev-pill ev-green">✓ 53% gross margin</span>
+          <span class="ev-pill ev-gold">⚠ China exposición bajando</span>
+        </div>
+        <div class="verdict">
+          <div class="verdict-lbl">Veredicto AXIOM</div>
+          <div class="verdict-txt">La posición core de mayor convicción del framework. <strong>ASML + KLAC</strong> son las dos posiciones con mejor relación riesgo/recompensa del universo invertible en este ciclo. AMAT es sólida segunda línea. Evitar LRCX por exposición China hasta aclaración regulatoria.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTOR 2 -->
+  <div class="sector">
+    <div class="sector-hd">
+      <div class="sector-name">2. Energía Nuclear + Grid Modernization — El Cuello de Botella Energético</div>
+      <span class="tier tier-core">CORE — EVIDENCIA CONTRACTUAL MÁXIMA</span>
+    </div>
+    <div class="sector-bd">
+      <div class="sector-col">
+        <div class="sector-col-ttl">Estado del Ciclo & Evidencia Q1 2026</div>
+        <div class="sector-txt">
+          Datos duros: <strong>Meta firmó PPAs de 20 años</strong> con Constellation (1.1GW Clinton), Vistra (2.176GW Perry+Davis-Besse+Beaver Valley), Oklo (1.2GW) y TerraPower (690MW+). AWS tiene PPA $18B con Talen Energy (17 años, 1.92GW). Microsoft restartó Three Mile Island con Constellation (20 años, 835MW). Estos no son anuncios — son flujos de caja contractuales bloqueados por 20 años.<br><br>
+          GE Vernova Q1 2026: revenue $9.34B (+16% YoY), backlog <strong>récord $163B</strong>, proyectando $200B en 2027 (un año antes de lo esperado). Ordenes de data centers: $2.4B solo en Q1 2026 — más que todo 2025. Book-to-bill electrificación: 2.5x. Quanta Services: backlog récord $48.5B en Q1 2026. Vistra: guidance EBITDA 2026 de $6.8–7.6B. El cuello de botella más subestimado: transformadores con lead times 2–4 años y demanda subida 119% desde 2019.
+        </div>
+        <div class="fresh-data">
+          <div class="fresh-icon">⬤ LIVE Q1 2026</div>
+          <div class="fresh-txt"><strong>GEV actuals:</strong> $163B backlog récord · $18.3B orders Q1 (71% crecimiento orgánico) · $200B backlog target 2027 · Vistra EBITDA guidance $6.8–7.6B · Meta 6.6GW nuclear PPAs firmadas · AWS $18B PPA Talen 17 años</div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl"><span>Utilidades nucleares existentes</span><span style="color:var(--gold)">75% — Cash Flow + Repricing</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:75%"></div></div>
+          <div class="prog-stages"><span>Contrato</span><span>Repricing</span><span>Expansión</span><span>SMR</span></div>
+          <div class="prog-marker">▲ PPAs firmados — flujo de caja bloqueado 20 años con hyperscalers</div>
+        </div>
+      </div>
+      <div class="sector-col">
+        <div class="sector-col-ttl">Filtros del Framework</div>
+        <div class="asym-score"><div class="asym-num">9.4</div><div><div class="asym-lbl-top">Score de Asimetría</div><div class="asym-lbl-bot">contratos = cash flow verificado</div></div></div>
+        <ul class="checklist">
+          <li><span class="ck-pass">✓</span> Revenue verificado hoy: Constellation $25.5B revenue 2025. Vistra EBITDA $6.8–7.6B guidance 2026. GEV backlog $163B.</li>
+          <li><span class="ck-pass">✓</span> Contratos firmados con nombres reales: Meta + Constellation + Vistra + Oklo + TerraPower. AWS + Talen. MSFT + TMI.</li>
+          <li><span class="ck-pass">✓</span> Moat: licencias nucleares 10–15 años. Infraestructura de grid irreplicable. Lead times 2–4 años protegen precios.</li>
+          <li><span class="ck-pass">✓</span> Catalizador: $1.4T estimado en electrificación AI hasta 2030. Primeros SMRs post-2028. Grid spending multidecadal.</li>
+          <li><span class="ck-warn">⚠</span> Riesgo: Vistra cotiza 72x trailing P/E — ya corrió. Buscar puntos de entrada en correcciones de mercado.</li>
+        </ul>
+        <div class="ev-row">
+          <span class="ev-pill ev-green">✓ PPAs 20 años firmados</span>
+          <span class="ev-pill ev-green">✓ GEV $163B backlog</span>
+          <span class="ev-pill ev-green">✓ $1.4T addressable 2030</span>
+          <span class="ev-pill ev-gold">⚠ Valuaciones elevadas en utilities</span>
+        </div>
+        <div class="verdict">
+          <div class="verdict-lbl">Veredicto AXIOM</div>
+          <div class="verdict-txt">Dos capas: <strong>GE Vernova + Quanta Services + Eaton</strong> (grid modernization — backlog y contratos duros, menor hype) y <strong>Constellation + Vistra</strong> (utilidades con PPAs — más corridas pero con visibilidad de cash flow 20 años). La primera capa tiene mejor asimetría precio/evidencia hoy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTOR 3 -->
+  <div class="sector">
+    <div class="sector-hd">
+      <div class="sector-name">3. Robótica & Physical AI — Los Enablers que Nadie Ve</div>
+      <span class="tier tier-asym">ASIMÉTRICO</span>
+    </div>
+    <div class="sector-bd">
+      <div class="sector-col">
+        <div class="sector-col-ttl">Estado del Ciclo & Evidencia Q1 2026</div>
+        <div class="sector-txt">
+          Jensen Huang en CES 2026: <em>"El momento ChatGPT de la robótica ya llegó."</em> Lanzó GR00T y Cosmos para razonamiento autónomo en máquinas. Boston Dynamics Atlas (producción): 56 grados de libertad, 110lb lift, desplegando en Hyundai Metaplant Georgia con Google DeepMind Gemini Robotics. Mercado humanoides proyectado $38B al 2035 CAGR 40%+.<br><br>
+          La tesis AXIOM no es comprar el robot — es comprar lo que el robot necesita y que nadie más fabrica. <strong>Ambarella (AMBA)</strong>: >70% revenue de edge AI ahora, arquitectura ultra-eficiente para robots y AVs, se ha reinventado completamente del chip de GoPro. <strong>Qualcomm Dragonwing IQ10</strong>: lanzado CES 2026 como alternativa de bajo consumo a Nvidia Jetson. International Federation of Robotics: mercado global $16.7B nuevo récord. ARM Holdings: chip en cada robot que no puede permitirse latencia de nube.
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl"><span>Physical AI — Posición en el ciclo</span><span style="color:var(--gold)">15% — Early Commercial</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:15%"></div></div>
+          <div class="prog-stages"><span>I+D</span><span>Prototipos</span><span>Early Comm.</span><span>Masivo</span></div>
+          <div class="prog-marker">▲ Primeros contratos manufactura firmados — upside masivo por delante</div>
+        </div>
+      </div>
+      <div class="sector-col">
+        <div class="sector-col-ttl">Filtros del Framework</div>
+        <div class="asym-score"><div class="asym-num">8.3</div><div><div class="asym-lbl-top">Score de Asimetría</div><div class="asym-lbl-bot">alto con riesgo de timing</div></div></div>
+        <ul class="checklist">
+          <li><span class="ck-pass">✓</span> Revenue emergiendo: AMBA >70% revenue edge AI. NVDA Jetson en producción industrial. ARM en 75M+ vehículos.</li>
+          <li><span class="ck-pass">✓</span> Contratos reales: Atlas en Hyundai Metaplant. Amazon testando Digit. Figure en BMW. Primeros contratos manufactura.</li>
+          <li><span class="ck-pass">✓</span> Moat enablers: AMBA arquitectura propietaria ultra-eficiente. ARM IP en todo dispositivo físico. Décadas de know-how.</li>
+          <li><span class="ck-warn">⚠</span> Timing: masificación real de humanoides 2027–2030. Mercado presente más pequeño de lo que la narrativa implica.</li>
+          <li><span class="ck-pass">✓</span> Catalizador: Neutron rocket de RKLB, GR00T/Cosmos de NVDA, Dragonwing de QCOM — infraestructura convergiendo.</li>
+        </ul>
+        <div class="ev-row">
+          <span class="ev-pill ev-green">✓ Atlas en Hyundai producción</span>
+          <span class="ev-pill ev-green">✓ AMBA 70%+ edge AI revenue</span>
+          <span class="ev-pill ev-gold">⚠ Timing masificación 2027+</span>
+          <span class="ev-pill ev-red">✗ Humanoides puros sin contratos</span>
+        </div>
+        <div class="verdict">
+          <div class="verdict-lbl">Veredicto AXIOM</div>
+          <div class="verdict-txt">Concentrar en <strong>enablers del stack</strong>: AMBA (edge inference), ARM (IP ubicuo), TER (test de semiconductores para robótica). Evitar humanoides puros sin contratos de manufactura real y con runway &lt;24 meses. Posición asimétrica — 10–15% del portafolio máximo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTOR 4 -->
+  <div class="sector">
+    <div class="sector-hd">
+      <div class="sector-name">4. Economía Espacial — Lanzamiento & In-Orbit Services</div>
+      <span class="tier tier-asym">ASIMÉTRICO</span>
+    </div>
+    <div class="sector-bd">
+      <div class="sector-col">
+        <div class="sector-col-ttl">Estado del Ciclo & Evidencia Q1 2026</div>
+        <div class="sector-txt">
+          Rocket Lab Q1 2026: revenue <strong>$200.3M</strong> (+63.5% YoY — primer trimestre que cruza $200M). Backlog <strong>$2.2B</strong> (+108% YoY). 31 nuevos contratos de lanzamiento en Q1 solo — más que todo 2025. 70+ misiones contratadas. DoD: $190M block order para 20 vuelos hipersónicos HASTE. $816M contrato Space Development Agency (más grande en su historia). Q2 guidance: $225–240M — otro récord.<br><br>
+          In-orbit servicing: 4 misiones con financiamiento DoD/DARPA en 2026. Astroscale U.S. Refueler (primera recarga de hidrazina en GEO de la historia). Northrop SpaceLogistics MRV (DARPA/NRL). 10–20 satélites GEO quedan sin combustible cada año — mercado de extensión de vida $2.4B hoy → $5.1B en 2030 con solo 2–3 players calificados. RKLB también adquirió Motiv Space Systems en mayo 2026 ($60M — robótica espacial para Marte).
+        </div>
+        <div class="fresh-data">
+          <div class="fresh-icon">⬤ LIVE Q1 2026</div>
+          <div class="fresh-txt"><strong>RKLB actuals:</strong> $200.3M revenue (primer $200M+ trimestre) · Backlog $2.2B (+108% YoY) · 70+ misiones contratadas · $190M DoD block order · $816M SDA contrato · Q2 guidance $225–240M · Needham PT $120 · Motiv Space adquirida</div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl"><span>Lanzamiento comercial</span><span style="color:var(--gold)">35% — Escala Acelerada</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:35%"></div></div>
+          <div class="prog-stages"><span>Infraestructura</span><span>Comercial</span><span>Escala</span><span>Madurez</span></div>
+          <div class="prog-marker">▲ Inflexión estratégica Q1 2026 — ya vende infraestructura, no lanzamientos</div>
+        </div>
+      </div>
+      <div class="sector-col">
+        <div class="sector-col-ttl">Filtros del Framework</div>
+        <div class="asym-score"><div class="asym-num">8.7</div><div><div class="asym-lbl-top">Score de Asimetría</div><div class="asym-lbl-bot">backlog verificado + contratos DoD</div></div></div>
+        <ul class="checklist">
+          <li><span class="ck-pass">✓</span> Revenue real y creciendo: RKLB $200.3M Q1 2026 (+63.5% YoY). Backlog $2.2B con 36% convertible en 12 meses.</li>
+          <li><span class="ck-pass">✓</span> Contratos firmados con montos: DoD $190M HASTE. SDA $816M. 70+ misiones. Neutron: 5 contratos firmados sin haber volado.</li>
+          <li><span class="ck-pass">✓</span> Moat: diseño y manufactura cohetes reutilizables = barrera de capital e know-how de años. Peter Beck: CEO con skin in the game (cortó su salario a $1).</li>
+          <li><span class="ck-pass">✓</span> Catalizador: Neutron first flight 2026–2027. $50–55M por misión (vs $8.5M Electron). In-orbit servicing contratos DoD.</li>
+          <li><span class="ck-warn">⚠</span> Riesgo: Neutron rocket aún no ha volado. Cualquier fallo de demostración = corrección significativa de valuación.</li>
+        </ul>
+        <div class="ev-row">
+          <span class="ev-pill ev-green">✓ $200M Q1 revenue récord</span>
+          <span class="ev-pill ev-green">✓ $2.2B backlog (+108% YoY)</span>
+          <span class="ev-pill ev-green">✓ DoD $816M contrato</span>
+          <span class="ev-pill ev-gold">⚠ Neutron aún no ha volado</span>
+        </div>
+        <div class="verdict">
+          <div class="verdict-lbl">Veredicto AXIOM</div>
+          <div class="verdict-txt"><strong>Rocket Lab (RKLB)</strong> es la posición asimétrica de mayor calidad en el sector espacial público. Backlog real, revenue acelerando, contratos DoD duros, CEO alineado. La tesis de Neutron ($50M/misión vs $8.5M Electron) es un multiplicador de 5–6x en el revenue por lanzamiento si tiene éxito. Posición asimétrica confirmada.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTOR 5 -->
+  <div class="sector">
+    <div class="sector-hd">
+      <div class="sector-name">5. Minerales Críticos ex-China — La Derisking Geopolítica Inevitable</div>
+      <span class="tier tier-asym">ASIMÉTRICO — GEOPOLÍTICO</span>
+    </div>
+    <div class="sector-bd">
+      <div class="sector-col">
+        <div class="sector-col-ttl">Estado del Ciclo & Evidencia Q1 2026</div>
+        <div class="sector-txt">
+          China controla 40–90% del procesamiento global de tierras raras, litio, cobalto y grafito — pero produce solo 10% del litio. Esta separación entre extracción y procesamiento es el moat a capturar. El DoD es ya el <strong>mayor accionista de MP Materials</strong> con offtake de 10 años + price floor + compromiso de comprar el 70% de producción de magnetos permanentes. Esto transforma MP de empresa minera a proveedora de defensa con ingresos garantizados.<br><br>
+          EO Trump enero 2026: "Adjusting Imports of Processed Critical Minerals." EU: 47 Proyectos Estratégicos con €22.5B requerido. Australia: AUD 7B en garantías de offtake. Lynas Rare Earths expandió Kalgoorlie a 12,000 tn/año. Litio carbonate rebotó +100% desde mínimos. Albemarle: $1.3B invertido en DLE. Los filtros de AXIOM para este sector son estrictos: solo productores con offtake gubernamental firmado + price floor + runway 3+ años verificado en balance.
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl"><span>Derisking ex-China</span><span style="color:var(--gold)">30% — Early Execution</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:30%"></div></div>
+          <div class="prog-stages"><span>Política</span><span>Contratos</span><span>Producción</span><span>Escala</span></div>
+          <div class="prog-marker">▲ Fase de contratos + early production — el ramp por delante</div>
+        </div>
+      </div>
+      <div class="sector-col">
+        <div class="sector-col-ttl">Filtros del Framework</div>
+        <div class="asym-score"><div class="asym-num">7.8</div><div><div class="asym-lbl-top">Score de Asimetría</div><div class="asym-lbl-bot">offtake gov = asimetría protegida</div></div></div>
+        <ul class="checklist">
+          <li><span class="ck-pass">✓</span> Revenue real: MP Materials produciendo con DoD como mayor accionista + offtake 10 años firmado. Lynas operacional.</li>
+          <li><span class="ck-pass">✓</span> Contratos firmados: DoD → MP Materials (price floor + offtake). EU 47 proyectos estratégicos. GM → Lithium Americas.</li>
+          <li><span class="ck-warn">⚠</span> Volatilidad de commodities: los precios siguen siendo cíclicos. Los offtake gov. protegen pero no eliminan volatilidad total.</li>
+          <li><span class="ck-pass">✓</span> Moat geopolítico: las restricciones chinas de export crean barrera de entrada estructural a competidores sin procesar.</li>
+          <li><span class="ck-warn">⚠</span> Riesgo: levantamiento de tensiones geopolíticas o normalización de relaciones EEUU-China podría reducir primas.</li>
+        </ul>
+        <div class="ev-row">
+          <span class="ev-pill ev-green">✓ DoD = mayor accionista MP</span>
+          <span class="ev-pill ev-green">✓ Price floor + offtake 10 años</span>
+          <span class="ev-pill ev-gold">⚠ Volatilidad commodity</span>
+          <span class="ev-pill ev-red">✗ Sin offtake = demasiado riesgo</span>
+        </div>
+        <div class="verdict">
+          <div class="verdict-lbl">Veredicto AXIOM</div>
+          <div class="verdict-txt">Solo jugadores con <strong>offtake gubernamental firmado + price floor verificado en SEC filing</strong>. MP Materials es la posición de mayor calidad (DoD al volante). Lynas segunda opción. Evitar cualquier junior miner sin contratos y sin caja. La señal es el contrato, no el mineral en el suelo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTOR 6 -->
+  <div class="sector">
+    <div class="sector-hd">
+      <div class="sector-name">6. Computación Cuántica — La Apuesta Asimétrica del Framework</div>
+      <span class="tier tier-exp">EXPLORATORIO — SIZING MÁXIMO 5%</span>
+    </div>
+    <div class="sector-bd">
+      <div class="sector-col">
+        <div class="sector-col-ttl">Estado del Ciclo & Evidencia Q1 2026</div>
+        <div class="sector-txt">
+          IonQ Q1 2026: revenue <strong>$64.7M (+755% YoY)</strong>, superó midpoint de guidance en 30%. Guidance 2026 elevado a $260–270M. Remaining performance obligations: $470M (+554% YoY). El primer pure-play cuántico en historia con >$100M revenue GAAP anual. Caja: $3.1B — sobrevive la carrera hacia fault tolerance. Contratos: DARPA HARQ program (quantum interconnects), $39M Space Development Agency (tactical space comms), Universidad Cambridge (256-qubit system sale). 60% revenue de clientes comerciales, 35% de internacional.<br><br>
+          D-Wave (QBTS): 83% margen bruto GAAP, +179% revenue 2025, enfocada en optimización (casos de uso reales ya). IBM: Heron R2 procesador de 156 qubits, target "quantum advantage" 2026. Google Willow: avances en error correction. BCG: $450–850B valor económico cuántico para 2040.
+        </div>
+        <div class="fresh-data">
+          <div class="fresh-icon">⬤ LIVE Q1 2026</div>
+          <div class="fresh-txt"><strong>IONQ actuals:</strong> $64.7M revenue (+755% YoY) · Guidance elevado $260–270M 2026 · RPO $470M (+554% YoY) · $3.1B caja · DARPA HARQ seleccionado · $39M SDA contrato · 256-qubit system sale Cambridge</div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl"><span>Computación cuántica — Madurez</span><span style="color:var(--gold)">20% — Early Commercial</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:20%"></div></div>
+          <div class="prog-stages"><span>NISQ</span><span>Early Comm.</span><span>Fault Tolerant</span><span>Masivo</span></div>
+          <div class="prog-marker">▲ Primera comercialización real — fault tolerance 2028–2030</div>
+        </div>
+      </div>
+      <div class="sector-col">
+        <div class="sector-col-ttl">Filtros del Framework</div>
+        <div class="asym-score"><div class="asym-num">6.5</div><div><div class="asym-lbl-top">Score de Asimetría</div><div class="asym-lbl-bot">upside masivo, riesgo real</div></div></div>
+        <ul class="checklist">
+          <li><span class="ck-pass">✓</span> Revenue real: IonQ $64.7M Q1 2026 (+755% YoY). Primer pure-play con >$100M GAAP revenue anual. RPO $470M.</li>
+          <li><span class="ck-pass">✓</span> Contratos: DARPA HARQ. SDA $39M. Cambridge 256-qubit system. $3.1B caja (no necesita levantar capital pronto).</li>
+          <li><span class="ck-warn">⚠</span> Valorización extrema: P/S ratio 100x+. Especulativo. Requiere sizing mínimo — máximo 5% del portafolio total.</li>
+          <li><span class="ck-warn">⚠</span> No rentable: EBITDA negativo $310–330M guidance 2026. Depende de que fault tolerance llegue antes de que el mercado se canse.</li>
+          <li><span class="ck-pass">✓</span> Upside: BCG $450–850B para 2040. IonQ es la posición más defensible del espacio: caja masiva + revenue real + contratos gov.</li>
+        </ul>
+        <div class="ev-row">
+          <span class="ev-pill ev-green">✓ $64.7M Q1 (+755% YoY)</span>
+          <span class="ev-pill ev-green">✓ $3.1B caja (no dilución pronto)</span>
+          <span class="ev-pill ev-gold">⚠ P/S 100x+ (especulativo)</span>
+          <span class="ev-pill ev-red">✗ EBITDA negativo $310M+</span>
+        </div>
+        <div class="verdict">
+          <div class="verdict-lbl">Veredicto AXIOM</div>
+          <div class="verdict-txt"><strong>IonQ + posición pequeña QBTS</strong> como barbell. Máximo absoluto 5% del portafolio total. Si va a cero, el portafolio no sufre daño material. Si fault tolerance llega antes de 2030, la posición puede ser 10–50x. Es una opción, no una inversión. Tratarla como tal en el sizing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTOR 7 -->
+  <div class="sector">
+    <div class="sector-hd">
+      <div class="sector-name">7. AI Drug Discovery & Longevity — El Sector de Más Largo Plazo</div>
+      <span class="tier tier-exp">EXPLORATORIO — VIGILAR, NO COMPRAR AÚN</span>
+    </div>
+    <div class="sector-bd">
+      <div class="sector-col">
+        <div class="sector-col-ttl">Estado del Ciclo & Análisis</div>
+        <div class="sector-txt">
+          AlphaFold 3 de DeepMind revolucionó la predicción de estructuras proteicas — el fundamento científico es sólido. Recursion Pharmaceuticals, Insilico Medicine, Schrodinger tienen contratos con Big Pharma. La primera aprobación FDA de un medicamento diseñado por AI ocurrió en 2025. GLP-1 (semaglutida, tirzepatida) es el mercado farmacéutico de mayor crecimiento en historia.<br><br>
+          El problema AXIOM: los trials clínicos duran 7–10 años. La mayoría de empresas AI-drug puras tienen runway limitado y necesitan múltiples rondas de capital. La FDA no acelera por AI. El timing es imposible de predecir. Para 2026–2028, la estrategia correcta es <strong>vigilar sin comprar</strong> y entrar solo cuando: (a) un drug llega a Phase 3 con AI-designed compound, o (b) Big Pharma adquiere una plataforma confirmando valor.
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl"><span>AI Drug Discovery</span><span style="color:var(--gold)">35% — Early Trials</span></div>
+          <div class="prog-track"><div class="prog-fill" style="width:35%"></div></div>
+          <div class="prog-stages"><span>Plataforma</span><span>Trials</span><span>Aprobación</span><span>Mercado</span></div>
+          <div class="prog-marker">▲ Primeras aprobaciones — pero la mayoría aún en Phase 1/2</div>
+        </div>
+      </div>
+      <div class="sector-col">
+        <div class="sector-col-ttl">Filtros del Framework</div>
+        <div class="asym-score"><div class="asym-num">5.5</div><div><div class="asym-lbl-top">Score de Asimetría</div><div class="asym-lbl-bot">timing regulatorio = barrera</div></div></div>
+        <ul class="checklist">
+          <li><span class="ck-pass">✓</span> Ciencia sólida: AlphaFold 3, primera aprobación FDA AI-designed 2025. El fundamento técnico es real.</li>
+          <li><span class="ck-pass">✓</span> Contratos pharma: Recursion, Insilico, Schrodinger tienen contratos con empresas grandes. Revenue existe.</li>
+          <li><span class="ck-warn">⚠</span> Timeline impredecible: 7–10 años de trials. FDA no acelera por algoritmos. Múltiples rondas de capital requeridas.</li>
+          <li><span class="ck-warn">⚠</span> Runway crítico: mayoría de AI-biotech puras necesitan capital nuevo antes de que el drug llegue al mercado.</li>
+          <li><span class="ck-fail">✗</span> Catalizador inmediato: no existe. Ninguna empresa AI-drug tiene revenue comercial de escala hoy.</li>
+        </ul>
+        <div class="ev-row">
+          <span class="ev-pill ev-green">✓ Ciencia verificada</span>
+          <span class="ev-pill ev-gold">⚠ Timeline 7–10 años</span>
+          <span class="ev-pill ev-red">✗ Sin catalizar inmediato</span>
+          <span class="ev-pill ev-red">✗ Runway crítico mayoría</span>
+        </div>
+        <div class="verdict">
+          <div class="verdict-lbl">Veredicto AXIOM</div>
+          <div class="verdict-txt"><strong>Watchlist solo hasta 2028.</strong> El sector tiene potencial para 2030–2040 pero los filtros actuales no justifican capital hoy con $2,000 de portafolio. Revisión en Fase 2 del capital ($50K+). Trigger de entrada: Phase 3 trial exitoso de compound AI-designed, o adquisición por Big Pharma de plataforma target.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</div>
+
+<!-- ══ V. MAPA DE ASIMETRÍA ══ -->
+<section class="section" id="asimetria">
+  <div class="s-hd">
+    <div class="s-num">V</div>
+    <div>
+      <span class="s-tag">Risk/Reward calibrado — Mayo 2026</span>
+      <h2 class="s-title">Mapa de <em>Asimetría Real</em></h2>
+    </div>
+  </div>
+  <p class="lead">Asimetría real = máximo upside con tesis completa dividido entre riesgo de pérdida permanente irrecuperable. Un 10x con 50% de probabilidad de cero no es asimétrico. Un 4x con 5% de probabilidad de pérdida permanente sí lo es. Estos ratios reflejan el escenario de pérdida permanente — no solo volatilidad de mercado.</p>
+
+  <div class="asym-row">
+    <div class="asym-name">Equipment Fab (ASML + KLAC)</div>
+    <div class="asym-bars">
+      <div class="asym-track"><div class="asym-up" style="width:88%"></div></div>
+      <div class="asym-track"><div class="asym-dn" style="width:10%"></div></div>
+      <div class="asym-ann"><span>↑ Upside tesis completa (2030: €44–60B revenue)</span><span>↓ Riesgo permanente (monopolio difícil de romper)</span></div>
+    </div>
+    <div class="asym-ratio">8.8:1</div>
+  </div>
+  <div class="asym-row">
+    <div class="asym-name">Grid Modernization (GEV + ETN + PWR)</div>
+    <div class="asym-bars">
+      <div class="asym-track"><div class="asym-up" style="width:85%"></div></div>
+      <div class="asym-track"><div class="asym-dn" style="width:10%"></div></div>
+      <div class="asym-ann"><span>↑ Upside ($163B backlog, $200B target 2027)</span><span>↓ Riesgo permanente (infraestructura física, diversificada)</span></div>
+    </div>
+    <div class="asym-ratio">8.5:1</div>
+  </div>
+  <div class="asym-row">
+    <div class="asym-name">Utilidades Nucleares con PPA (CEG + VST)</div>
+    <div class="asym-bars">
+      <div class="asym-track"><div class="asym-up" style="width:78%"></div></div>
+      <div class="asym-track"><div class="asym-dn" style="width:11%"></div></div>
+      <div class="asym-ann"><span>↑ Upside (PPAs 20 años bloqueados con hyperscalers)</span><span>↓ Riesgo permanente (regulatorio nuclear, ya corrido)</span></div>
+    </div>
+    <div class="asym-ratio">7.1:1</div>
+  </div>
+  <div class="asym-row">
+    <div class="asym-name">Rocket Lab (RKLB)</div>
+    <div class="asym-bars">
+      <div class="asym-track"><div class="asym-up" style="width:90%"></div></div>
+      <div class="asym-track"><div class="asym-dn" style="width:20%"></div></div>
+      <div class="asym-ann"><span>↑ Upside (Neutron $50M/misión, backlog $2.2B+)</span><span>↓ Riesgo (Neutron fallo técnico = corrección fuerte)</span></div>
+    </div>
+    <div class="asym-ratio">4.5:1</div>
+  </div>
+  <div class="asym-row">
+    <div class="asym-name">Enablers Physical AI (AMBA + ARM)</div>
+    <div class="asym-bars">
+      <div class="asym-track"><div class="asym-up" style="width:88%"></div></div>
+      <div class="asym-track"><div class="asym-dn" style="width:22%"></div></div>
+      <div class="asym-ann"><span>↑ Upside (edge AI 16.2% CAGR, latencia inelástica)</span><span>↓ Riesgo (competencia de NVDA Jetson, timing)</span></div>
+    </div>
+    <div class="asym-ratio">4.0:1</div>
+  </div>
+  <div class="asym-row">
+    <div class="asym-name">Minerales Críticos con offtake gov (MP Materials)</div>
+    <div class="asym-bars">
+      <div class="asym-track"><div class="asym-up" style="width:82%"></div></div>
+      <div class="asym-track"><div class="asym-dn" style="width:20%"></div></div>
+      <div class="asym-ann"><span>↑ Upside (DoD garantiza revenue + geopolítica estructural)</span><span>↓ Riesgo (volatilidad commodity, normalización EEUU-China)</span></div>
+    </div>
+    <div class="asym-ratio">4.1:1</div>
+  </div>
+  <div class="asym-row">
+    <div class="asym-name">Quantum (IonQ) — Posición Exploratoria</div>
+    <div class="asym-bars">
+      <div class="asym-track"><div class="asym-up" style="width:95%"></div></div>
+      <div class="asym-track"><div class="asym-dn" style="width:40%"></div></div>
+      <div class="asym-ann"><span>↑ Upside (BCG $450–850B para 2040, 755% revenue growth)</span><span>↓ Riesgo permanente (P/S 100x+, EBITDA negativo)</span></div>
+    </div>
+    <div class="asym-ratio">2.4:1</div>
+  </div>
+
+  <div class="pullquote">
+    <p>La asimetría no es el upside solo. Es la relación entre el máximo que puedes perder permanentemente y el máximo que puedes ganar con la tesis completa. Equipment de semicondutores tiene la mejor asimetría del framework porque el riesgo de pérdida permanente es estructuralmente bajo y el upside está contractualmente documentado.</p>
+    <cite>— AXIOM v3.0 — Principio de Asimetría Verificada</cite>
+  </div>
+</section>
+
+<!-- ══ VI. COMPOUNDING ══ -->
+<div style="background:var(--abyss)">
+<section class="section" id="compounding">
+  <div class="s-hd">
+    <div class="s-num" style="color:rgba(201,168,76,.2)">VI</div>
+    <div>
+      <span class="s-tag">La matemática del tiempo — La fuerza más poderosa del universo</span>
+      <h2 class="s-title s-title-light">El Sistema de <em>Compounding 2026–2040</em></h2>
+    </div>
+  </div>
+
+  <p class="lead lead-light">Buffett dijo que el compounding es "la octava maravilla del mundo." Pero la condición crítica que nadie menciona: debe ser sin interrupción. Una sola venta emocional en el momento equivocado puede destruir años de compounding acumulado. Tu trabajo no es ser brillante — es no interrumpir el proceso.</p>
+
+  <div class="staircase">
+    <div class="stair-row">
+      <div class="stair-year">2026</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:3%" data-val=""></div>
+        <div class="stair-note">Capital inicial $2K + aporte Q3 + Q4. Primeras posiciones. Aprender a leer earnings y filings. Construir Diario AXIOM.</div>
+      </div>
+      <div class="stair-val">$3,500</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2027</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:5%" data-val=""></div>
+        <div class="stair-note">$4K aportes + compounding inicial. Portafolio toma forma. Primer ciclo de revisión completo. Psicología a prueba.</div>
+      </div>
+      <div class="stair-val">$7,800</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2028</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:8%" data-val=""></div>
+        <div class="stair-note">El compounding empieza a ser visible. Aportes representan menos del 50% del crecimiento. Primera tesis asimétrica puede tomar vuelo.</div>
+      </div>
+      <div class="stair-val">$13,500</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2029</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:11%" data-val=""></div>
+        <div class="stair-note">Transición a Fase 2. Capital operando en escala suficiente para que el compounding empiece a dominar sobre aportes.</div>
+      </div>
+      <div class="stair-val">$20,000</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2030</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:15%" data-val=""></div>
+        <div class="stair-note">Milestone crítico: $25K. Estructura fiscal. Revisión de tesis (algunos sectores habrán madurado). Posibles ganancias en posición asimétrica.</div>
+      </div>
+      <div class="stair-val">$28,000</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2032</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:22%" data-val=""></div>
+        <div class="stair-note">El compounding anual supera el aporte anual por primera vez. La máquina ya se alimenta a sí misma parcialmente.</div>
+      </div>
+      <div class="stair-val">$55,000</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2034</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:32%" data-val=""></div>
+        <div class="stair-note">Fase 3. Capital operando en escala significativa. Primeras consideraciones de estructura de holding o LLC para optimización fiscal.</div>
+      </div>
+      <div class="stair-val">$95,000</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2036</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:48%" data-val=""></div>
+        <div class="stair-note">El portafolio genera más cada año que todos los aportes combinados del último bienio. La fase de libertad financiera se vuelve matemáticamente posible.</div>
+      </div>
+      <div class="stair-val">$165,000</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2038</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:68%" data-val=""></div>
+        <div class="stair-note">Fase 4 — Preservación. Transición de acumulación a protección y optimización. Planificación sucesoria si aplica.</div>
+      </div>
+      <div class="stair-val">$235,000</div>
+    </div>
+    <div class="stair-row">
+      <div class="stair-year">2040</div>
+      <div class="stair-bar-wrap">
+        <div class="stair-bar" style="width:95%" data-val=""></div>
+        <div class="stair-note">TARGET. Escenario base: $320K. Con posición asimétrica exitosa: $600K–$900K+. A los 38 años con $600K+ y 27 años por delante.</div>
+      </div>
+      <div class="stair-val" style="color:var(--gold)">$320K–$900K+</div>
+    </div>
+  </div>
+
+  <p style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;color:var(--mist);text-align:center;margin-top:1rem">Proyección escenario base a CAGR 16% · Aportes $4K anuales · Reinversión 100% · Sin apalancamiento</p>
+</section>
+</div>
+
+<!-- ══ VII. SIZING & KELLY ══ -->
+<section class="section" id="kelly">
+  <div class="s-hd">
+    <div class="s-num">VII</div>
+    <div>
+      <span class="s-tag">Fractional Kelly (0.25x) — Cómo distribuir el capital</span>
+      <h2 class="s-title">Arquitectura de <em>Sizing & Capital</em></h2>
+    </div>
+  </div>
+  <p class="lead">El Kelly Criterion matemáticamente maximiza el crecimiento a largo plazo. Pero en la práctica, el Kelly completo es demasiado agresivo para la psicología humana. AXIOM usa Fractional Kelly (0.25x): captura el 75% del óptimo matemático con el 25% del riesgo psicológico. La concentración con convicción supera la diversificación diluida.</p>
+
+  <div class="kelly-grid">
+    <div class="kelly-card">
+      <div class="kelly-label">Posición Core individual</div>
+      <div class="kelly-pct">15–20%</div>
+      <div class="kelly-desc">ASML, KLAC, GEV, ETN, CEG. Moat verificado + backlog contractual + monopolio o oligopolio. Conviction documentada en Diario AXIOM. Máximo 4–5 posiciones core.</div>
+    </div>
+    <div class="kelly-card">
+      <div class="kelly-label">Posición Asimétrica individual</div>
+      <div class="kelly-pct">8–12%</div>
+      <div class="kelly-desc">RKLB, AMBA, MP Materials. Backlog real + contrato firmado + upside 4–8x posible. Asimetría verificada, no narrativa. Máximo 3–4 posiciones asimétricas.</div>
+    </div>
+    <div class="kelly-card">
+      <div class="kelly-label">Posición Exploratoria total</div>
+      <div class="kelly-pct">5%</div>
+      <div class="kelly-desc">IonQ, QBTS. Suma total de exploratorias = máximo 5% del portafolio. Si va a cero, el framework no sufre. Si funciona: 10–50x en una posición pequeña.</div>
+    </div>
+    <div class="kelly-card">
+      <div class="kelly-label">Reserva de Oportunidad</div>
+      <div class="kelly-pct">5–10%</div>
+      <div class="kelly-desc">Cash o equivalente. Para actuar en correcciones de mercado &gt;30% cuando el pánico crea precios de regalo en tus tesis más fuertes. No es "cash muerto" — es munición estratégica.</div>
+    </div>
+    <div class="kelly-card">
+      <div class="kelly-label">Posiciones totales en portafolio</div>
+      <div class="kelly-pct">6–9</div>
+      <div class="kelly-desc">Nunca más de 9 posiciones simultáneas. La diversificación diluida destruye retornos. La concentración con convicción y con conviction documentada es la estrategia correcta.</div>
+    </div>
+    <div class="kelly-card">
+      <div class="kelly-label">Regla de la Posición Única</div>
+      <div class="kelly-pct">Max 22%</div>
+      <div class="kelly-desc">Ninguna posición individual supera el 22% del portafolio, incluso si la convicción es máxima. La asimetría del drawdown es brutal — una posición puede colapsar incluso con tesis correcta.</div>
+    </div>
+  </div>
+
+  <div style="background:var(--gold-faint);border:1px solid rgba(201,168,76,.2);padding:2rem;margin:2rem 0">
+    <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:1rem">Distribución Práctica — Portafolio de $2,000 (Día 1)</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;font-size:.85rem">
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">ASML — Core</strong><span style="color:var(--mist)">$400 (20%) — Monopolio EUV</span></div>
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">GEV — Core</strong><span style="color:var(--mist)">$350 (17.5%) — Grid backlog $163B</span></div>
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">KLAC — Core</strong><span style="color:var(--mist)">$300 (15%) — Process control moat</span></div>
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">ETN — Core</strong><span style="color:var(--mist)">$250 (12.5%) — Transformadores AI</span></div>
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">RKLB — Asimétrico</strong><span style="color:var(--mist)">$250 (12.5%) — Backlog $2.2B</span></div>
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">AMBA — Asimétrico</strong><span style="color:var(--mist)">$200 (10%) — Edge AI 70%+ revenue</span></div>
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">MP — Asimétrico</strong><span style="color:var(--mist)">$150 (7.5%) — DoD offtake firmado</span></div>
+      <div><strong style="display:block;color:var(--void);margin-bottom:.2rem">IONQ — Exploratorio</strong><span style="color:var(--mist)">$100 (5%) — $64.7M Q1 revenue</span></div>
+    </div>
+    <p style="font-family:var(--font-mono);font-size:.5rem;color:var(--mist);margin-top:1.25rem;letter-spacing:.08em">Esta distribución es ilustrativa y no constituye asesoría financiera. Ajustar a precio de mercado actual el día de compra.</p>
+  </div>
+</section>
+
+<!-- ══ VIII. PSICOLOGÍA ══ -->
+<div style="background:var(--abyss)">
+<section class="section" id="psicologia">
+  <div class="s-hd">
+    <div class="s-num" style="color:rgba(201,168,76,.2)">VIII</div>
+    <div>
+      <span class="s-tag">El enemigo más peligroso — Tú mismo</span>
+      <h2 class="s-title s-title-light">Sistema de <em>Gestión Psicológica</em></h2>
+    </div>
+  </div>
+  <p class="lead lead-light">El 80% de los inversores que pierden dinero en ideas correctas lo hacen por incapacidad psicológica. El análisis correcto destruido por la psicología incorrecta es el error más costoso y más común. AXIOM trata la psicología como infraestructura, no como consejo.</p>
+
+  <div class="psych-grid">
+    <div class="psych-card">
+      <div class="psych-threat">Sesgo #1</div>
+      <div class="psych-title">Recency Bias — La Trampa del Precio</div>
+      <div class="psych-body">Después de -30% te parece que la tesis falló. Después de +50% te parece un genio. Ninguna de las dos cosas es información real. El precio corto es ruido. El backlog contractual, el revenue creciendo, el moat intacto — esos son datos.</div>
+      <div class="psych-antidote">
+        <div class="psych-ant-lbl">Antídoto AXIOM</div>
+        <div class="psych-ant-txt">Antes de cualquier decisión: abre el Diario AXIOM y lee la tesis original. Si el backlog sigue, si el contrato sigue, si el moat sigue — el precio no te dice nada accionable.</div>
+      </div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-threat">Sesgo #2</div>
+      <div class="psych-title">FOMO Rotacional — El Enemigo del Compounding</div>
+      <div class="psych-body">Cada vez que rotas fuera de una posición por miedo a perderte algo nuevo, cristalizas una pérdida potencial y rompes el compounding de una tesis que puede haber tardado años en madurar. La rotación por momentum es la antítesis del sistema AXIOM.</div>
+      <div class="psych-antidote">
+        <div class="psych-ant-lbl">Antídoto AXIOM</div>
+        <div class="psych-ant-txt">Regla: solo rotas si la tesis se invalida (contrato cancelado, moat destruido, competidor emergente verificado). Nunca rotas por precio, por narrativa nueva, o por lo que dice Twitter/Reddit.</div>
+      </div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-threat">Sesgo #3</div>
+      <div class="psych-title">Verificación Obsesiva de Precios</div>
+      <div class="psych-body">Verificar precios diariamente crea ansiedad sin información adicional. El precio de hoy de ASML no te dice nada sobre si el backlog de €38.8B va a convertirse en revenue. La verificación obsesiva lleva inevitablemente a decisiones emocionales.</div>
+      <div class="psych-antidote">
+        <div class="psych-ant-lbl">Antídoto AXIOM</div>
+        <div class="psych-ant-txt">Revisa precios máximo una vez por semana. Revisa earnings trimestralmente. Revisa tesis completa anualmente. El resto del tiempo: no abras la app del broker.</div>
+      </div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-threat">Sesgo #4</div>
+      <div class="psych-title">Overconfidence Juvenil — El Peor Momento</div>
+      <div class="psych-body">A los 24 años, el primer año de buenos retornos crea una confianza excesiva que lleva a sizing incorrecto, a saltarse filtros del framework, y a entrar en posiciones sin evidencia. El mercado tarda en corregir — pero siempre corrige.</div>
+      <div class="psych-antidote">
+        <div class="psych-ant-lbl">Antídoto AXIOM</div>
+        <div class="psych-ant-txt">Pre-mortem obligatorio antes de cada compra nueva: "¿Qué tendría que ser verdad para que esta tesis falle completamente?" Si no puedes responder con detalle, no compras.</div>
+      </div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-threat">Sesgo #5</div>
+      <div class="psych-title">Dolor de Drawdown — La Prueba Real</div>
+      <div class="psych-body">Un -40% de mercado se siente como fracaso total. El S&P 500 ha tenido correcciones de -50%+ tres veces desde 2000. Cada vez, los que vendieron en el peor momento nunca recuperaron el compounding perdido. La prueba real del sistema no es cuánto ganas — es qué haces cuando todo cae.</div>
+      <div class="psych-antidote">
+        <div class="psych-ant-lbl">Antídoto AXIOM</div>
+        <div class="psych-ant-txt">Escribe HOY una carta a tu yo futuro en drawdown: "El portafolio bajó X%. ASML sigue siendo el único fabricante de EUV del planeta. El backlog sigue siendo €38.8B. No hagas nada." Léela cuando duela.</div>
+      </div>
+    </div>
+    <div class="psych-card">
+      <div class="psych-threat">Sesgo #6</div>
+      <div class="psych-title">Celebration Bias — El Peligro del Éxito</div>
+      <div class="psych-body">Después de un buen año, el impulso es aumentar el riesgo, ignorar los filtros del framework, o empezar a calcular el portafolio en escenario bull como si fuera real. El éxito temprano es más peligroso que el fracaso temprano para el inversor de largo plazo.</div>
+      <div class="psych-antidote">
+        <div class="psych-ant-lbl">Antídoto AXIOM</div>
+        <div class="psych-ant-txt">Después de cada año positivo, vuelve al primer principio: "El dinero no existe hasta que el compounding lo multiplica en silencio durante años." Celebra, luego vuelve al sistema sin cambiar nada.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══ IX. MODELOS MENTALES ══ -->
+<section class="section" id="modelos">
+  <div class="s-hd">
+    <div class="s-num">IX</div>
+    <div>
+      <span class="s-tag">El Latticework de Munger — Herramientas de pensamiento obligatorias</span>
+      <h2 class="s-title">Modelos Mentales <em>AXIOM</em></h2>
+    </div>
+  </div>
+  <p class="lead">Charlie Munger construyó su fortuna aplicando sistemáticamente un conjunto de modelos mentales de diferentes disciplinas. No era más inteligente que el mercado — pensaba de manera diferente al mercado. Estos son los modelos que AXIOM exige aplicar antes de cada decisión.</p>
+
+  <div class="model-grid">
+    <div class="model-card">
+      <div class="model-num">MODELO 01</div>
+      <div class="model-title">Inversión (Pensar al Revés)</div>
+      <div class="model-body">En lugar de preguntar "¿cómo hago que esta tesis funcione?", pregunta "¿qué tendría que pasar para que falle completamente?" Si ASML fallara: un competidor con EUV viable en 5 años (imposible dado el I+D requerido) o China desarrolla chip avanzado sin litografía (no existe). Al hacer el análisis al revés, el moat se vuelve más obvio.</div>
+      <div class="model-app">APLICACIÓN: Pre-mortem de cada posición antes de comprar. Escríbelo en el Diario AXIOM.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">MODELO 02</div>
+      <div class="model-title">Second-Order Thinking</div>
+      <div class="model-body">Primer orden: "AI crece → NVIDIA sube." Segundo orden: "AI crece → necesita más chips → necesita más fabs → necesita más EUV → ASML sube más y con menos riesgo que NVIDIA que ya está en precio." El segundo orden revela la asimetría que el primer orden ignora. Siempre pregunta: "¿Y luego qué?"</div>
+      <div class="model-app">APLICACIÓN: Para cada tesis, mapear la cadena causal 2–3 niveles más profunda que el consenso.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">MODELO 03</div>
+      <div class="model-title">Circle of Competence</div>
+      <div class="model-body">Solo inviertes en lo que puedes explicar en 3 oraciones a alguien sin contexto técnico. Si no puedes explicar por qué ASML tiene un monopolio irreplicable, no tienes la competencia para mantener la posición bajo volatilidad. La competencia no viene de leer una tesis — viene de entender el mecanismo causal.</div>
+      <div class="model-app">APLICACIÓN: Test de las 3 oraciones antes de cada posición nueva. Si fallas el test, estudia más antes de comprar.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">MODELO 04</div>
+      <div class="model-title">Margin of Safety</div>
+      <div class="model-body">No solo en precio (comprar barato) — sino en balance (runway 2+ años), timing (no forzar entrada), y psicología (position sizing que te permita dormir en -40%). La Margin of Safety en psicología es la más importante: si el tamaño de la posición te causa ansiedad, está sobredimensionada.</div>
+      <div class="model-app">APLICACIÓN: Antes de comprar, pregunta si dormirías bien con esta posición al -50%. Si no: reduce el tamaño hasta que la respuesta sea sí.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">MODELO 05</div>
+      <div class="model-title">Via Negativa — La Riqueza por Eliminación</div>
+      <div class="model-body">La riqueza generacional se construye tanto por lo que NO haces como por lo que haces. No usas apalancamiento. No rotas por momentum. No compras narrativa sin contratos. No verificas precios diariamente. No vendes en drawdowns. Cada una de estas negaciones protege el compounding de un riesgo real.</div>
+      <div class="model-app">APLICACIÓN: Antes de cada acción, pregunta primero si existe una buena razón para NO hacerlo.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">MODELO 06</div>
+      <div class="model-title">Pensamiento Probabilístico</div>
+      <div class="model-body">No piensas en binario (funciona/no funciona). Piensas en distribuciones: el escenario base tiene probabilidad X%, el bull Y%, el bear Z%. El expected value incluye todos los escenarios. Una posición puede tener 70% de probabilidad de funcionar moderadamente, 20% de ir muy bien, y 10% de ir a cero — y ese 10% cambia completamente el sizing correcto.</div>
+      <div class="model-app">APLICACIÓN: Para cada posición, documenta los 3 escenarios y sus probabilidades estimadas antes de comprar.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">MODELO 07</div>
+      <div class="model-title">Prueba de Irreplicabilidad</div>
+      <div class="model-body">El moat real solo existe cuando la respuesta a "¿cuánto capital necesita un competidor para replicar esto en 5 años?" es: "no existe ninguna cantidad de capital que lo haga posible en ese timeframe." ASML pasa la prueba. Un app de software no. Un transformador de alta potencia calificado probablemente sí. Este test separa moats reales de ventajas temporales.</div>
+      <div class="model-app">APLICACIÓN: Hacer la "Prueba de Irreplicabilidad" para cada posición core del portafolio.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">MODELO 08</div>
+      <div class="model-title">El Periódico del Futuro (Backcast)</div>
+      <div class="model-body">Imagina el titular de un periódico financiero en 2035: "El mercado de semiconductores AI alcanzó $X billones. El equipment de fabricación fue el mayor beneficiado del ciclo de 2025–2035." ¿Tu portafolio actual está posicionado para ese titular? Si no, ¿qué necesitas cambiar? El backcast desde el futuro revela gaps en el portafolio presente.</div>
+      <div class="model-app">APLICACIÓN: Ejercicio anual. Escribe 3 titulares probables de 2035 y verifica si el portafolio los captura.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ X. ERRORES FATALES ══ -->
+<div style="background:var(--abyss)">
+<section class="section" id="errores">
+  <div class="s-hd">
+    <div class="s-num" style="color:rgba(201,168,76,.2)">X</div>
+    <div>
+      <span class="s-tag">Via Negativa — Lo que destruye la riqueza generacional</span>
+      <h2 class="s-title s-title-light">Los 7 Errores <em>Fatales</em></h2>
+    </div>
+  </div>
+
+  <p class="lead lead-light">Estos errores no producen pérdidas — producen ruina permanente del sistema de compounding. No son teóricos. Cada uno ha destruido carteras de inversores que tenían la tesis correcta pero fallaron en la ejecución.</p>
+
+  <ul class="error-list">
+    <li class="error-item">
+      <div class="error-num">01</div>
+      <div>
+        <div class="error-title" style="color:var(--crimson)">Apalancamiento en cualquier posición core</div>
+        <div class="error-desc">El apalancamiento convierte la volatilidad normal del mercado en riesgo de ruina permanente. Un drawdown de -50% (que ocurre regularmente) con 2x apalancamiento = -100%. No hay recuperación. AXIOM prohíbe absolutamente el apalancamiento en posiciones core. En posiciones especulativas: la respuesta también es no.</div>
+      </div>
+    </li>
+    <li class="error-item">
+      <div class="error-num">02</div>
+      <div>
+        <div class="error-title" style="color:var(--crimson)">Vender en drawdowns de mercado</div>
+        <div class="error-desc">El S&P 500 ha caído -50%+ tres veces en los últimos 25 años. Cada vez, los que vendieron nunca recuperaron el compounding perdido. La única pregunta que importa en un drawdown es: ¿la tesis cambió o solo el precio? Si el backlog de ASML sigue siendo €38.8B durante un -40% de mercado, es una oportunidad, no una señal de salida.</div>
+      </div>
+    </li>
+    <li class="error-item">
+      <div class="error-num">03</div>
+      <div>
+        <div class="error-title" style="color:var(--crimson)">Rotaciones por momentum o narrativa nueva</div>
+        <div class="error-desc">Cada vez que rotas fuera de una posición core para perseguir la narrativa del momento, cristalizas la pérdida del compounding de esa posición y entras en algo nuevo sin el proceso de validación completo. La rotación frecuente es uno de los mayores destructores de retornos documentados en la literatura académica.</div>
+      </div>
+    </li>
+    <li class="error-item">
+      <div class="error-num">04</div>
+      <div>
+        <div class="error-title" style="color:var(--crimson)">Posiciones en narrativa sin evidencia contractual</div>
+        <div class="error-desc">Si no hay contratos firmados con nombres reales en el SEC filing, si no hay backlog reportado, si no hay revenue creciendo verificable — es narrativa. La narrativa puede durar años antes de colapsar. AXIOM requiere evidencia contractual antes de posición core. La narrativa es watchlist, nunca portafolio.</div>
+      </div>
+    </li>
+    <li class="error-item">
+      <div class="error-num">05</div>
+      <div>
+        <div class="error-title" style="color:var(--crimson)">Sobredimensionar posiciones exploratorias</div>
+        <div class="error-desc">IonQ con P/S de 100x+ en posición del 25% del portafolio convierte una apuesta asimétrica en un riesgo existencial para el sistema de compounding. Las posiciones exploratorias deben ser lo suficientemente pequeñas para que si van a cero, el portafolio no sufra daño material. El máximo absoluto es 5% del total.</div>
+      </div>
+    </li>
+    <li class="error-item">
+      <div class="error-num">06</div>
+      <div>
+        <div class="error-title" style="color:var(--crimson)">Interrumpir los aportes trimestrales</div>
+        <div class="error-desc">$1,000 trimestrales parece pequeño ahora. A CAGR de 16%, cada $1,000 aportado en 2026 vale ~$5,400 en 2040. Un año de aportes interrumpido = $4,000 × multiplicador de compounding = ~$21,600 perdidos en 2040. Los aportes son el combustible del sistema — interrumpirlos es destruir el motor.</div>
+      </div>
+    </li>
+    <li class="error-item">
+      <div class="error-num">07</div>
+      <div>
+        <div class="error-title" style="color:var(--crimson)">No documentar la tesis y los triggers de invalidación</div>
+        <div class="error-desc">Sin tesis escrita, cualquier ruido del mercado puede parecer una razón para salir. Sin triggers de invalidación definidos de antemano, las decisiones emocionales se disfrazan de análisis racional. El Diario AXIOM no es opcional — es la infraestructura que separa el sistema de la intuición.</div>
+      </div>
+    </li>
+  </ul>
+</section>
+</div>
+
+<!-- ══ XI. ARQUITECTURA DE SALIDA ══ -->
+<section class="section" id="salida">
+  <div class="s-hd">
+    <div class="s-num">XI</div>
+    <div>
+      <span class="s-tag">Cuándo salir — y cuándo no salir</span>
+      <h2 class="s-title">Arquitectura de <em>Salida & Triggers</em></h2>
+    </div>
+  </div>
+  <p class="lead">La salida correcta es la decisión más difícil y la más importante. La mayoría de los inversores venden por las razones incorrectas (precio, miedo, FOMO) y mantienen por las incorrectas (ego, esperanza). AXIOM define con precisión los únicos triggers válidos para salida.</p>
+
+  <div class="exit-grid">
+    <div class="exit-card danger">
+      <div class="exit-lbl">Salir — Tesis rota definitivamente</div>
+      <div class="exit-title">Triggers VÁLIDOS para salida inmediata</div>
+      <ul class="exit-list">
+        <li>Competidor EUV con &gt;10% market share en 5 años (ASML) — hasta hoy imposible</li>
+        <li>PPAs masivamente cancelados (&gt;30% del total firmado) — energía nuclear</li>
+        <li>China levanta restricciones de export completas + price floor cancelado (minerales)</li>
+        <li>Revenue de IonQ cae &gt;2 trimestres consecutivos o runway &lt;18 meses</li>
+        <li>RKLB: fallo catastrófico de Neutron sin plan de recuperación verificable</li>
+        <li>Balance sheet crítico: deuda neta &gt;3x EBITDA sin visibilidad de mejora</li>
+        <li>Moat principal destruido por cambio regulatorio o tecnológico verificado</li>
+        <li>CEO/management con intereses claramente opuestos a accionistas (no vesting, ventas masivas)</li>
+      </ul>
+    </div>
+    <div class="exit-card safe">
+      <div class="exit-lbl">No salir — Estas NO son razones</div>
+      <div class="exit-title">Triggers INVÁLIDOS — Ignórarlos siempre</div>
+      <ul class="exit-list">
+        <li>El precio cayó -30%, -40%, -50% sin cambio en tesis</li>
+        <li>Una recesión macroeconómica (el backlog no desaparece con la economía)</li>
+        <li>Analistas bajaron el target price o el rating</li>
+        <li>Una nueva empresa en el sector con narrativa mejor que la tuya</li>
+        <li>El mercado subió y "ya capturé suficiente ganancia"</li>
+        <li>La posición bajó más que el mercado este mes/trimestre</li>
+        <li>Un artículo bearish en Bloomberg/WSJ sobre el sector</li>
+        <li>Tu ego no quiere reconocer que estás en pérdida temporalmente</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gold-rule"></div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--void);margin-bottom:1.5rem">Triggers de Invalidación por Sector — Específicos</h3>
+  <div style="display:grid;gap:1rem">
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:1rem;padding:1rem;border:1px solid rgba(201,168,76,.1)">
+      <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">ASML / KLAC</div>
+      <div style="font-size:.85rem;color:#3a3a50">Competidor con &gt;5% EUV market share (actualmente 0%) O China embargo completo de todas las exportaciones europeas O backlog colapsa &gt;50% en 2 trimestres consecutivos</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:1rem;padding:1rem;border:1px solid rgba(201,168,76,.1)">
+      <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">GEV / ETN / PWR</div>
+      <div style="font-size:.85rem;color:#3a3a50">AI capex colapsa (&gt;50% reducción en hyperscaler guidance) O breakthrough en eficiencia energética que elimina necesidad de nueva infraestructura O backlog declina 3 trimestres consecutivos</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:1rem;padding:1rem;border:1px solid rgba(201,168,76,.1)">
+      <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">RKLB</div>
+      <div style="font-size:.85rem;color:#3a3a50">Fallo catastrófico de Neutron sin contrato de mantenimiento OR backlog cae &gt;40% en 1 trimestre OR SpaceX lanza producto directamente competidor en el mismo segmento de precio con capacidad disponible</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:1rem;padding:1rem;border:1px solid rgba(201,168,76,.1)">
+      <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">IONQ</div>
+      <div style="font-size:.85rem;color:#3a3a50">Revenue crece &lt;50% YoY durante 2 años consecutivos OR runway &lt;18 meses OR pérdida de contratos DARPA/DoD sin reemplazo equivalente OR Google/IBM anuncian quantum advantage con tecnología no compatible</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:1rem;padding:1rem;border:1px solid rgba(201,168,76,.1)">
+      <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">MP Materials</div>
+      <div style="font-size:.85mm;color:#3a3a50">DoD cancela offtake agreement (requeriría acto del Congreso) OR China normaliza export completos + precio NdFeB colapsa &gt;60% Y se mantiene &gt;18 meses OR nueva tecnología de motor eléctrico elimina necesidad de magnetos de tierras raras</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ XII. IMPLEMENTACIÓN ══ -->
+<div style="background:var(--abyss)">
+<section class="section" id="implementacion">
+  <div class="s-hd">
+    <div class="s-num" style="color:rgba(201,168,76,.2)">XII</div>
+    <div>
+      <span class="s-tag">Acciones concretas — Primeros 90 días</span>
+      <h2 class="s-title s-title-light">Plan de <em>Implementación Inmediata</em></h2>
+    </div>
+  </div>
+
+  <div class="cal-row">
+    <div class="cal-period">Semana 1</div>
+    <div class="cal-content">
+      <div class="cal-action">Abrir cuenta en Interactive Brokers</div>
+      <div class="cal-detail">IBKR es el broker con menores comisiones para mercados internacionales (necesitas acceder a ASML en Nasdaq o Euronext). Sin mínimo de capital, comisiones desde $0.005/acción. Configura cuenta individual o LLC si ya tienes estructura legal. Activa reinversión automática de dividendos donde esté disponible.</div>
+    </div>
+  </div>
+  <div class="cal-row">
+    <div class="cal-period">Semana 2</div>
+    <div class="cal-content">
+      <div class="cal-action">Leer los 2 últimos earnings de ASML + GEV + RKLB</div>
+      <div class="cal-detail">Descarga los press releases de SEC.gov o IR de cada compañía. Busca específicamente: (1) backlog y su crecimiento YoY, (2) guidance para el año, (3) language del CEO sobre demand, (4) cualquier mención de riesgo China o export control, (5) capex comprometido. Esto construye el "Circle of Competence" antes de poner dinero.</div>
+    </div>
+  </div>
+  <div class="cal-row">
+    <div class="cal-period">Semana 3</div>
+    <div class="cal-content">
+      <div class="cal-action">Primera compra y creación del Diario AXIOM</div>
+      <div class="cal-detail">Ejecutar las posiciones según la distribución de $2,000 definida en la sección VII. Para cada posición, escribir en el Diario AXIOM: (1) la tesis en 3 oraciones, (2) los 3 triggers de invalidación, (3) el precio de entrada y la razón del sizing, (4) el pre-mortem ("¿qué tendría que pasar para que falle?"). Guardar el documento — lo necesitarás en el primer drawdown.</div>
+    </div>
+  </div>
+  <div class="cal-row">
+    <div class="cal-period">Agosto 2026</div>
+    <div class="cal-content">
+      <div class="cal-action">Primer aporte trimestral — $1,000</div>
+      <div class="cal-detail">Distribución: $400 a la posición core que más haya caído desde la entrada (no la que subió — comprar fuerza donde tienes convicción cuando hay descuento), $300 a posición asimétrica, $200 a nueva posición si el análisis la justifica, $100 a posición exploratoria. Actualizar Diario AXIOM con qué cambió en cada tesis.</div>
+    </div>
+  </div>
+  <div class="cal-row">
+    <div class="cal-period">Noviembre 2026</div>
+    <div class="cal-content">
+      <div class="cal-action">Segundo aporte + primera revisión trimestral de tesis</div>
+      <div class="cal-detail">Antes del aporte: revisar cada posición contra los earnings más recientes. ¿Sigue el backlog? ¿Sigue el moat? ¿Algún trigger de invalidación activado? Si ninguno: no cambies nada, solo añade capital. Si alguno fue activado: sigue el protocolo de salida definido. Sin emociones — solo protocolo.</div>
+    </div>
+  </div>
+  <div class="cal-row">
+    <div class="cal-period">Enero 2027</div>
+    <div class="cal-content">
+      <div class="cal-action">Primera revisión anual completa de tesis</div>
+      <div class="cal-detail">Revisión completa de cada tesis, no solo del precio. Preguntas clave: (1) ¿El sector sigue siendo el cuello de botella que era? (2) ¿Han emergido competidores verificables? (3) ¿El capital soberano sigue apoyando? (4) ¿El sizing original sigue siendo correcto con el portafolio actual? Documentar cambios en el Diario AXIOM.</div>
+    </div>
+  </div>
+  <div class="cal-row">
+    <div class="cal-period">Permanente</div>
+    <div class="cal-content">
+      <div class="cal-action">El Protocolo AXIOM de mantenimiento continuo</div>
+      <div class="cal-detail">Diario: No verificar precios. Semanal: Revisar precios una vez, sin tomar acción. Trimestral: Leer earnings + verificar backlog + actualizar Diario AXIOM + ejecutar aporte. Anual: Revisión completa de tesis + ajuste de sizing si aplica + revisión de sectores emergentes. Nunca: Rotar por momentum, comprar en FOMO, vender en drawdown sin trigger de invalidación activado.</div>
+    </div>
+  </div>
+
+  <div class="phase-grid" style="margin-top:3rem">
+    <div class="phase-card">
+      <div class="phase-hd">
+        <div class="phase-hd-num">Fase 1</div>
+        <div class="phase-hd-title">Multiplicación Agresiva Controlada</div>
+        <div class="phase-hd-range">2026 — 2028</div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-target">$2K → $15K</div>
+        <div class="phase-desc">Construir posiciones core. Aprender a leer earnings y filings. Desarrollar Diario AXIOM. Mantener aportes trimestrales sin excepción. Máxima paciencia con volatilidad.</div>
+        <div class="phase-focus">Foco principal</div>
+        <ul class="phase-items">
+          <li>Construir 5–6 posiciones base con convicción documentada</li>
+          <li>Leer al menos 8 earnings reports completos de posiciones core</li>
+          <li>Completar primer ciclo de revisión anual de tesis</li>
+          <li>No vender nada salvo trigger de invalidación activado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-hd">
+        <div class="phase-hd-num">Fase 2</div>
+        <div class="phase-hd-title">Aceleración + Transición</div>
+        <div class="phase-hd-range">2029 — 2032</div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-target">$15K → $65K</div>
+        <div class="phase-desc">Las posiciones core producen retornos materiales. Compounding visible. Añadir 1–2 posiciones asimétricas nuevas si la evidencia lo justifica. Revisar tesis completa 2029.</div>
+        <div class="phase-focus">Foco principal</div>
+        <ul class="phase-items">
+          <li>Primera posición asimétrica de nueva generación (AI drug, quántica madura)</li>
+          <li>Considerar estructura fiscal si se superan $25K de portafolio</li>
+          <li>Buscar incrementar ingresos activos para acelerar aportes</li>
+          <li>Revisión de tesis 2029 — algunos sectores habrán madurado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-hd">
+        <div class="phase-hd-num">Fase 3</div>
+        <div class="phase-hd-title">Compounding Institucional</div>
+        <div class="phase-hd-range">2033 — 2037</div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-target">$65K → $200K</div>
+        <div class="phase-desc">El compounding anual supera los aportes nuevos. La máquina se alimenta a sí misma. Revisión completa de sectores — emerge el próximo ciclo tecnológico (2035–2045).</div>
+        <div class="phase-focus">Foco principal</div>
+        <ul class="phase-items">
+          <li>Reducir gradualmente posiciones especulativas, aumentar core probado</li>
+          <li>Primera planificación de estructura legal (LLC, holding si aplica)</li>
+          <li>Identificar el próximo ciclo tecnológico para 2035–2045</li>
+          <li>Revisión de tesis completa 2033 + 2035</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-hd">
+        <div class="phase-hd-num">Fase 4</div>
+        <div class="phase-hd-title">Preservación + Riqueza Generacional</div>
+        <div class="phase-hd-range">2038 — 2040</div>
+      </div>
+      <div class="phase-bd">
+        <div class="phase-target">$200K → $900K+</div>
+        <div class="phase-desc">El sistema genera más que los aportes. Transición a preservación. Reducir concentración, añadir descorrelación. A los 38 años con $320K–$900K y 27 años por delante.</div>
+        <div class="phase-focus">Foco principal</div>
+        <ul class="phase-items">
+          <li>Diversificación de preservación (activos descorrelacionados, bonos soberanos)</li>
+          <li>Primera revisión de planificación sucesoria si aplica</li>
+          <li>Evaluación de libertad financiera: ¿es posible antes de 2040?</li>
+          <li>Definir el sistema para el próximo ciclo de 15–20 años</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══ XIII. PRESERVACIÓN ══ -->
+<section class="section" id="preservacion">
+  <div class="s-hd">
+    <div class="s-num">XIII</div>
+    <div>
+      <span class="s-tag">Las 4 capas de la arquitectura patrimonial</span>
+      <h2 class="s-title">Sistema de <em>Preservación de Riqueza</em></h2>
+    </div>
+  </div>
+  <p class="lead">La preservación de riqueza generacional requiere estructura deliberada, no solo buenos retornos. Cada capa del sistema tiene una función específica — no son intercambiables.</p>
+
+  <div style="border:1px solid rgba(201,168,76,.12);margin:2.5rem 0;overflow:hidden">
+    <div class="wealth-layer" style="background:var(--cream);border-bottom:1px solid rgba(201,168,76,.08)">
+      <div class="wealth-layer-name">Capa 1<br><span style="color:var(--mist);font-size:.85rem;font-weight:400">Liquidez & Emergencia</span></div>
+      <div class="wealth-layer-desc">3–6 meses de gastos en cuenta separada. No es parte del portafolio de inversión — es seguro psicológico que previene ventas forzadas en el peor momento. Sin esta capa, cualquier emergencia personal puede forzar liquidar posiciones core en drawdown. Es capital improductivo necesario.</div>
+      <div class="wealth-layer-pct" style="color:var(--mist)">5%</div>
+    </div>
+    <div class="wealth-layer" style="background:rgba(201,168,76,.02);border-bottom:1px solid rgba(201,168,76,.08)">
+      <div class="wealth-layer-name">Capa 2<br><span style="color:var(--cobalt);font-size:.85rem;font-weight:400">Activos Defensivos</span></div>
+      <div class="wealth-layer-desc">Bonos soberanos de alta calidad (Treasuries US), gold ETF, activos descorrelacionados del ciclo tech. Provee estabilidad psicológica y capital de oportunidad durante shocks sistémicos. Permite actuar durante crashes sin liquidar posiciones core. En Fase 1 (portafolio &lt;$15K) esta capa puede reducirse al mínimo.</div>
+      <div class="wealth-layer-pct" style="color:var(--cobalt)">10%</div>
+    </div>
+    <div class="wealth-layer" style="background:var(--cream);border-bottom:1px solid rgba(201,168,76,.08)">
+      <div class="wealth-layer-name">Capa 3<br><span style="color:var(--teal);font-size:.85rem;font-weight:400">Core AXIOM</span></div>
+      <div class="wealth-layer-desc">Las posiciones Core y Asimétricas del framework. El motor del compounding. Esta capa produce la riqueza generacional. Nunca se toca por necesidades operacionales — esa función la cumple la Capa 1. Las posiciones de esta capa tienen horizonte de 5–14 años, no se evalúan semanalmente.</div>
+      <div class="wealth-layer-pct" style="color:var(--teal)">80%</div>
+    </div>
+    <div class="wealth-layer" style="background:rgba(138,104,216,.03)">
+      <div class="wealth-layer-name">Capa 4<br><span style="color:var(--violet);font-size:.85rem;font-weight:400">Exploratorio & Optionality</span></div>
+      <div class="wealth-layer-desc">Quantum, biotech emergente, sectores en identificación para 2035–2045. Máximo 5%. Si falla completamente, el portafolio no sufre daño material. Si funciona: puede convertirse en la mayor posición de los próximos 5 años. Tratada como opción, no como inversión.</div>
+      <div class="wealth-layer-pct" style="color:var(--violet)">5%</div>
+    </div>
+  </div>
+
+  <div class="model-grid" style="margin-top:2rem">
+    <div class="model-card">
+      <div class="model-num">VECTOR 01</div>
+      <div class="model-title">Optimización Fiscal</div>
+      <div class="model-body">La diferencia entre impuesto de corto y largo plazo puede representar 10–20 puntos porcentuales de retorno neto. En un portafolio de $320K con 15% de retorno anual, la diferencia puede ser $30K+ al año. Consulta con asesor fiscal especializado una vez que alcances $50K de portafolio.</div>
+      <div class="model-app">ACCIÓN: A partir de $50K: consulta fiscal obligatoria. Evaluar LLC, holding o estructura específica a tu jurisdicción.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">VECTOR 02</div>
+      <div class="model-title">Descorrelación Geográfica</div>
+      <div class="model-body">El riesgo político de un solo país puede destruir décadas de compounding. AXIOM tiene exposición natural multi-jurisdicción (EEUU, Europa con ASML, global con RKLB). Adicionalmente: considera cuentas de corretaje en múltiples países y activos en USD + EUR como mínimo.</div>
+      <div class="model-app">ACCIÓN: Mantén exposición en 2–3 jurisdicciones. IBKR permite acceso a mercados europeos y asiáticos desde una sola cuenta.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">VECTOR 03</div>
+      <div class="model-title">Planificación Sucesoria</div>
+      <div class="model-body">La riqueza generacional requiere un plan para transferirla. Sin estructura legal apropiada, los impuestos de herencia pueden destruir en un año lo que tardó décadas construir. A los 24 años esto parece lejano — a los 38 con $500K+ es urgente.</div>
+      <div class="model-app">ACCIÓN: Primera consulta con abogado patrimonial al superar $200K de portafolio neto.</div>
+    </div>
+    <div class="model-card">
+      <div class="model-num">VECTOR 04</div>
+      <div class="model-title">Seguro de Portafolio Selectivo</div>
+      <div class="model-body">No como diversificación genérica — sino como cobertura selectiva cuando las valuaciones son históricamente extremas. Cuando el portafolio está en máximos y P/E sectorial está 2+ desviaciones estándar sobre la media: considerar 2–5% en coberturas. Nunca posición permanente.</div>
+      <div class="model-app">ACCIÓN: Solo en valuaciones extremas verificadas. Cobertura como herramienta ocasional, no como filosofía permanente.</div>
+    </div>
+  </div>
+
+  <div class="summary-box">
+    <div class="summary-label">Resumen Ejecutivo AXIOM v3.0 — Dónde Está la Mayor Asimetría en Mayo 2026</div>
+    <div class="summary-grid">
+      <div class="sum-block">
+        <div class="sum-block-title">Posición CORE — Mayor Convicción</div>
+        <div class="sum-block-body">ASML (monopolio EUV, backlog €38.8B, guidance elevado, target 2030 €44–60B) + KLAC (41.3% operating margin, Barclays Overweight, mínima exposición China) + GEV (backlog récord $163B, $200B target 2027, órdenes AI data center $2.4B solo Q1 2026) + ETN (grid modernization, $1.2B expansión de capacidad, transformer shortage 2–4 años lead time).</div>
+      </div>
+      <div class="sum-block" style="border-color:var(--teal)">
+        <div class="sum-block-title" style="color:var(--teal)">Posición ASIMÉTRICA — Upside 4–8x</div>
+        <div class="sum-block-body">RKLB (backlog $2.2B +108% YoY, $200M Q1 revenue, Neutron próximo = 6x revenue por lanzamiento) + AMBA (70%+ edge AI revenue, arquitectura ultra-eficiente, robótica = demanda inelástica) + MP Materials (DoD mayor accionista, offtake 10 años + price floor, geopolítica estructural multi-décadas).</div>
+      </div>
+      <div class="sum-block" style="border-color:var(--violet)">
+        <div class="sum-block-title" style="color:var(--violet)">Posición EXPLORATORIA — Opción 10–50x</div>
+        <div class="sum-block-body">IonQ (primer pure-play con $100M+ GAAP revenue, +755% YoY en Q1 2026, guidance $260–270M, $3.1B caja, DARPA HARQ + SDA $39M contratos, RPO $470M +554% YoY). Máximo 5% del portafolio total. Treat as option, not investment.</div>
+      </div>
+      <div class="sum-block" style="border-color:var(--crimson)">
+        <div class="sum-block-title" style="color:var(--crimson)">Lo que AXIOM v3.0 EVITA</div>
+        <div class="sum-block-body">Megacaps AI en valuaciones actuales (NVDA, MSFT — ya en precio). Humanoides sin contratos de manufactura real. Lam Research (35% exposición China). Cualquier apalancamiento. AI-drug discovery sin Phase 3 confirmada. Rotaciones por momentum. Posiciones en narrativa sin revenue ni contrato en SEC filing.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <p>Tienes 24 años, $2,000, y la mayor ventaja que existe en inversión: tiempo. Warren Buffett acumuló el 99% de su riqueza después de los 50 — no porque fue más inteligente, sino porque dejó que el compounding trabajara 60 años sin interrumpirlo. A los 24, con 14 años de horizonte verificado hacia los 38, y luego 27 años más hacia los 65, tienes exactamente la misma ventaja que Buffett a los 10 años. Tu único trabajo es no arruinar el compounding. Todo lo demás es ruido.</p>
+    <cite>— Aether — AXIOM v3.0 — Mayo 2026 — Investigación profunda, datos verificados Q1 2026</cite>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">AXIOM</div>
+  <div class="footer-disc">Este documento es un marco de análisis privado basado en investigación profunda y evidencia pública disponible a mayo de 2026, incluyendo resultados de Q1 2026 de ASML, GE Vernova, Rocket Lab, IonQ, y datos de contratos nucleares verificados en filings públicos. No constituye asesoría financiera, legal ni fiscal. El autor no garantiza resultados. Los mercados son impredecibles en el corto plazo. Toda decisión de inversión es responsabilidad exclusiva de quien la toma.</div>
+  <div style="font-family:var(--font-mono);font-size:.5rem;color:rgba(112,112,160,.35);letter-spacing:.12em;margin-top:1.5rem">AXIOM v3.0 — Mayo 13, 2026 — Datos Q1 2026 — Uso Privado</div>
+</footer>
+
+<script>
+const secs=document.querySelectorAll('.section');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.05});
+secs.forEach(s=>obs.observe(s));
+
+const bars=document.querySelectorAll('.prog-fill,.asym-up,.asym-dn,.stair-bar');
+const bObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,w=el.style.width;el.style.width='0';setTimeout(()=>{el.style.width=w},150);bObs.unobserve(el)}})},{threshold:.3});
+bars.forEach(b=>bObs.observe(b));
+
+const navLinks=document.querySelectorAll('.nav-item');
+const secEls=document.querySelectorAll('section[id]');
+const nObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navLinks.forEach(l=>{l.style.color='';l.style.borderBottomColor=''});const al=document.querySelector(`.nav-item[href="#${id}"]`);if(al){al.style.color='var(--gold)';al.style.borderBottomColor='var(--gold)'}}})},{threshold:.25});
+secEls.forEach(s=>nObs.observe(s));
+</script>
+</body>
+</html>
